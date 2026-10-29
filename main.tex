@@ -1,0 +1,609 @@
+% =====================================================================
+% Proposta - Edital FAPERJ nº 34/2026 - PROFIX-RJ (FAPERJ/CNPq/CAPES)
+% Limite: 20 páginas, incluindo orçamento (Anexo 1, II.II-a)
+% Itens marcados com \pendente{...} precisam ser preenchidos.
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage[version=4]{mhchem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+
+\onehalfspacing
+\setlist{noitemsep,topsep=3pt}
+\sisetup{group-separator={.},output-decimal-marker={,}}
+
+% --- Marcadores ---------------------------------------------------------
+\newcommand{\pendente}[1]{\textcolor{red}{\textbf{[PENDENTE: #1]}}}
+\newcommand{\itemedital}[1]{\hfill{\footnotesize\textcolor{gray}{(Edital: #1)}}}
+\newcommand{\X}{\cellcolor{gray!45}}   % célula preenchida no cronograma
+\newcolumntype{C}{>{\centering\arraybackslash}X}   % coluna X centralizada
+
+% --- Cabeçalho ----------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\footnotesize PROFIX-RJ -- FAPERJ/CNPq/CAPES -- 2026}
+\rhead{\footnotesize Página \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+
+% =====================================================================
+\begin{document}
+
+% ---------------------------------------------------------------------
+\begin{center}
+{\large\bfseries Edital FAPERJ nº 34/2026 -- Programa de Apoio à Fixação de Doutores\\
+no Estado do Rio de Janeiro -- Conhecimento Brasil / PROFIX-RJ}\\[1em]
+{\Large\bfseries Otimização da composição química da água de injeção baseada em dados\\
+geológicos, geoquímicos e operacionais por métodos de aprendizado profundo\\
+para preservação da injetividade}
+\end{center}
+
+\vspace{0.5em}
+\noindent
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Proponente / coordenador(a) & Ramon de Paoli Mendes \\
+Instituição executora       & Universidade Federal do Rio de Janeiro (UFRJ) \\
+Programa de Pós-Graduação   & Programa de Engenharia Mecânica (PEM) -- COPPE/UFRJ \\
+Grande área / área / subárea & Engenharias / Engenharia de Petróleo / Injetividade e inteligência artificial \\
+Eixo estratégico            & Óleo e gás \\
+Bolsa CAPES pleiteada       & Doutorado (48 meses) \\
+Duração                     & 48 meses (+3 meses para indicação dos bolsistas CAPES) \\
+Auxílio FAPERJ solicitado   & R\$ 200.000,00 \\
+\bottomrule
+\end{tabularx}
+
+% ---------------------------------------------------------------------
+\section*{Resumo}\itemedital{2.16 II; Anexo 1 B}
+\addcontentsline{toc}{section}{Resumo}
+
+A reinjeção de água produzida, isolada ou misturada à água do mar dessulfatada, é prática
+dominante em campos maduros e cresce no pré-sal. A composição dessa água determina o
+declínio de injetividade por mecanismos acoplados: incrustação iônica (\ce{BaSO4},
+\ce{CaCO3}, \ce{SrSO4}), migração de finos induzida por salinidade, filtração profunda e
+formação de reboco por sólidos e óleo, e dano biológico. Hoje a escolha da composição e do
+nível de tratamento é feita por critérios empíricos e análise caso a caso. Este projeto
+propõe determinar a composição química ótima da água de injeção a partir das
+características geológicas da rocha, da química das águas de formação, do mar e
+produzida, e dos dados operacionais e do poço, de modo a mitigar a incrustação, a
+migração de argilas e os demais mecanismos de dano à formação. Para isso, um agente de
+aprendizado por reforço profundo (RL) será treinado sobre um modelo dinâmico do poço
+injetor, composto por um simulador físico do dano à formação e por um modelo substituto
+de aprendizado profundo, para determinar ao longo do tempo a composição que preserva a
+injetividade. Como desdobramento tecnológico, a política treinada será embarcada no
+controle de uma unidade de condicionamento de água em bancada, que produz a água na
+composição recomendada. \pendente{completar: resultados esperados
+e impacto em 2--3 frases}
+
+\noindent\textbf{Palavras-chave:} injetividade; água de injeção; dano à formação;
+incrustação inorgânica; migração de finos; aprendizado profundo; aprendizado por reforço.
+
+% ---------------------------------------------------------------------
+\section{Justificativa e diagnóstico da situação atual}\itemedital{2.16 VIII; Anexo 1 C}
+
+A água produzida é o maior efluente líquido da produção de óleo e gás, com estimativa
+global superior a 250 milhões de barris por dia e volume crescente à medida que os campos
+amadurecem \cite{macedonio2014,elbadawy2021}. É uma matriz formada pela água de formação
+e, em campos sob injeção, pela própria água injetada após a irrupção \cite{liang2018}. Sua
+reinjeção, isolada ou misturada à água do mar, é a destinação predominante em campos
+offshore maduros.
+
+A composição dessa água define sua compatibilidade com o reservatório. Ela reúne
+eletrólitos monovalentes (\ce{Na+}, \ce{K+}, \ce{Cl-}), cátions divalentes formadores de
+incrustação (\ce{Ca^2+}, \ce{Mg^2+}, \ce{Ba^2+}, \ce{Sr^2+}, \ce{Fe^2+}), ânions como
+\ce{SO4^2-} e \ce{HCO3-} e gases dissolvidos como \ce{H2S} e \ce{CO2}
+\cite{kamal2018}. Quando a água injetada, rica em sulfato, encontra a água de formação rica
+em bário e estrôncio, a mistura ultrapassa o limite de solubilidade e precipita sulfatos,
+com destaque para o \ce{BaSO4}, cujo produto de solubilidade da ordem de $10^{-10}$ o
+torna praticamente irreversível depois de nucleado \cite{binmerdhah2010,bedrikovetsky2009}.
+A esse mecanismo somam-se a cristalização de halita em salmouras hipersalinas
+\cite{rocha2001,miri2016}, a transição gipsita--anidrita do \ce{CaSO4} nas zonas de gradiente
+térmico \cite{kamalipour2017}, a migração de finos por redução de salinidade
+\cite{salinity2021}, a filtração profunda de sólidos e óleo \cite{pangsharma1997} e o dano
+associado à atividade bacteriana.
+
+O efeito integrado é a perda progressiva de permeabilidade no entorno do poço, com aumento
+do fator de película e queda do índice de injetividade \cite{bedrikovetsky2009,pal2023}.
+As consequências operam em três escalas: maior pressão de injeção e consumo elétrico das
+bombas; intervenções corretivas (acidificação, \textit{scale squeeze}, \textit{workover})
+que retiram o poço de serviço e nem sempre restauram a permeabilidade original
+\cite{kermani2023,shabani2019}; e, a longo prazo, desbalanço da reposição de volume
+(\textit{voidage replacement}), perda de pressão do reservatório e redução da recuperação
+final \cite{liang2018}.
+
+\textbf{Contexto fluminense.} Os campos maduros da Bacia de Campos, como Marlim, Albacora
+e Roncador, operam com injeção conjunta de água do mar dessulfatada e água produzida, e o
+\ce{BaSO4} é a incrustação dominante em seus históricos operacionais
+\cite{rocha2001,bezerra2004}. No pré-sal, a água produzida tem salinidade elevada e a
+fração reinjetada cresce.
+
+\textbf{Lacuna operacional.} A especificação da água de injeção (grau de dessulfatação,
+proporção da mistura, dosagem de inibidores, salinidade) é hoje definida por critérios
+empíricos e análises de compatibilidade caso a caso, tratando cada mecanismo
+isoladamente e sem considerar a evolução do dano e das águas disponíveis ao longo da vida
+do campo. O trabalho preliminar do proponente (Seção~\ref{sec:prelim}) mostra quanto essa
+escolha pesa: em condição representativa do campo de Albacora, reduzir o sulfato residual
+de 40 para 0,5~mg/L eleva a injetividade remanescente após 30 dias de cerca de 1\% para
+65\%. Uma resposta tão sensível justifica tratar a composição da água como problema de
+otimização formal.
+
+% ---------------------------------------------------------------------
+\section{Estado da arte}\itemedital{2.16 IX}
+
+\subsection{Modelos de declínio de injetividade}
+A formulação clássica de filtração profunda \cite{pangsharma1997,sharma1987} foi estendida
+pelo grupo de Bedrikovetsky para a reinjeção offshore, incluindo caracterização em
+laboratório \cite{bedrikovetsky2001}, previsão a partir do histórico de poços
+\cite{bedrikovetsky2005}, reboco externo e sua erosão
+\cite{paiva2007,yuan2012,yerramilli2015} e incrustação na coinjeção com água dessulfatada
+\cite{bedrikovetsky2009}. Modelos geoquímicos e hidrodinâmicos acoplados tratam
+incrustações compostas \cite{shabani2019}, e trabalhos recentes incorporam a salinidade e a
+migração de finos com validação de campo \cite{salinity2021}.
+
+\subsection{Tratamento da água de injeção}
+A dessulfatação da água do mar por nanofiltração em plantas de remoção de sulfato (SRP)
+reduz o sulfato a 40--100~mg/L, com baixo custo e maturidade industrial \cite{bader2007}.
+A osmose reversa encontra limites na água produzida: membranas de poliamida degradam
+acima de cerca de 45~°C, a pressão osmótica restringe a operação a salinidades da ordem de
+70.000--85.000~mg/L e o óleo residual provoca \textit{fouling} severo
+\cite{alsalmi2020,pawar2022,hsieh2023}. A destilação por membrana (MD), com membranas
+hidrofóbicas de PTFE ou PVDF, é dirigida por gradiente térmico, aproveita a temperatura da
+própria água produzida e opera com salmouras hipersalinas, com rejeição iônica reportada
+acima de 99,9\% \cite{macedonio2014,alsalmi2020,pawar2022}. A linha de pesquisa do
+proponente com membranas de ePTFE se insere aqui. Essas rotas de tratamento compõem o
+espaço de decisão do problema de otimização proposto.
+
+\subsection{Otimização da composição da água}
+Otimização de salinidade e composição com mínima incrustação \cite{scirep2023};
+acoplamento PHREEQC, simulador de reservatório e algoritmo genético \cite{carbonate2021}.
+Esses trabalhos otimizam recuperação e compatibilidade, não a injetividade.
+
+\subsection{Aprendizado por reforço em injeção de água}
+RL e RL profundo aplicados ao controle de vazões e pressões de injeção para maximizar o
+VPL \cite{miftakhov2020,abdalla2025,nascimento2022}.
+
+\subsection{Lacuna}
+\textbf{Não foram encontrados trabalhos que tratem a composição e o tratamento da água
+como ação de um agente e a injetividade como objetivo.} \pendente{confirmar com busca
+sistemática (Scopus/OnePetro)}
+
+% ---------------------------------------------------------------------
+\section{Resultados preliminares do proponente}\label{sec:prelim}
+
+Em trabalho anterior, o proponente desenvolveu e implementou um modelo unidimensional
+reativo de declínio de injetividade que acopla a filtração profunda de partículas à
+precipitação de \ce{BaSO4}, aplicado a um cenário representativo do campo de Albacora
+(Bacia de Campos). Esse modelo é o ponto de partida da camada física do presente projeto.
+
+\subsection{Modelo}
+O balanço de partículas em suspensão ($c$) e retidas ($\sigma_p$) segue a formulação de
+filtração profunda \cite{pangsharma1997,bedrikovetsky2001}:
+\begin{equation}
+\frac{\partial (\phi c)}{\partial t} + u\,\frac{\partial c}{\partial x}
++ \frac{\partial \sigma_p}{\partial t} = 0, \qquad
+\frac{\partial \sigma_p}{\partial t} = \lambda\, u\, c .
+\end{equation}
+A tendência de precipitação é dada pela razão de saturação, com correção das atividades
+iônicas para força iônica da ordem de 2~mol/kg \cite{stumm1996,oddo1994}:
+\begin{equation}
+SR = \frac{\gamma_{\mathrm{Ba}} C_{\mathrm{Ba}}\,\gamma_{\mathrm{SO_4}} C_{\mathrm{SO_4}}}{K_{sp}} .
+\end{equation}
+A quantidade termodinamicamente precipitável $x_{eq}$ é a menor raiz de
+$\gamma_{\mathrm{Ba}}\gamma_{\mathrm{SO_4}}(C_{\mathrm{Ba}}-x_{eq})(C_{\mathrm{SO_4}}-x_{eq}) = K_{sp}$,
+limitada pelo reagente escasso, e a cinética é aproximada por relaxação de primeira ordem,
+$\Delta C_{prec} = x_{eq}\left[1-\exp(-\Delta t/\tau_{prec})\right]$. As duas fases sólidas
+reduzem a porosidade e a permeabilidade por uma lei aditiva de dano:
+\begin{equation}
+\phi = \phi_0 - \sigma_p - \sigma_{\mathrm{BaSO_4}}, \qquad
+\frac{k(x,t)}{k_0} = \frac{1}{1 + \beta_p\,\sigma_p + \beta_{\mathrm{BaSO_4}}\,\sigma_{\mathrm{BaSO_4}}} .
+\end{equation}
+A métrica de injetividade é obtida pela integração da lei de Darcy sob vazão prescrita:
+\begin{equation}
+\Delta P(t) = \int_0^L \frac{\mu u}{k(x,t)}\,dx, \qquad
+\alpha(t) = \frac{I(t)}{I_0} = \frac{\Delta P_0}{\Delta P(t)} .
+\end{equation}
+O transporte iônico foi resolvido por esquema \textit{upwind} explícito de volumes finitos
+(CFL = 0,70, passo de tempo adaptativo à porosidade local), com verificação do balanço de
+massa de bário.
+
+\subsection{Resultados}
+Foram comparados três cenários de água injetada, com \ce{Ba^2+} = 250~mg/L na água de
+formação \cite{bezerra2004} e horizonte de 30 dias: (A) água do mar sem tratamento
+(2.800~mg/L de \ce{SO4^2-}); (B) nanofiltração em SRP (40~mg/L) \cite{bader2007}; e
+(C) destilação por membrana (0,5~mg/L) \cite{alsalmi2020}.
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}lCCCCC@{}}
+\toprule
+\textbf{Cenário} & \textbf{SR} & $\boldsymbol{\alpha}$\textbf{(24 h)} & $\boldsymbol{\alpha}$\textbf{(30 d)} & \textbf{\ce{BaSO4} (g)} & $\boldsymbol{\Delta P}$\textbf{ (bar)} \\
+\midrule
+A -- sem tratamento & $1{,}04\times10^{4}$ & 0,070 & 0,003 & 9,83 & 36,5 \\
+B -- NF/SRP        & $1{,}49\times10^{2}$ & 0,250 & 0,011 & 2,40 & 8,98 \\
+C -- MD            & 1,86                 & 0,983 & 0,654 & 0,014 & 0,153 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+
+A nanofiltração reduz a supersaturação em duas ordens de grandeza, mas mantém a mistura
+cerca de 150 vezes acima do limite de solubilidade, e a injetividade cai a cerca de 1\%
+em 30 dias. O permeado de MD leva o sistema à vizinhança do equilíbrio, deposita cerca de
+170 vezes menos barita e preserva 65\% da injetividade, com sobrepressão de injeção cerca
+de 60 vezes menor.
+
+\subsection{Limitações e ligação com o projeto}
+O estudo preliminar tem limitações que definem diretamente o escopo do presente projeto:
+\begin{itemize}
+  \item geometria 1D, enquanto o entorno do poço é radial;
+  \item cinética de primeira ordem, enquanto o crescimento da barita é de segunda ordem
+        na supersaturação \cite{nancollas1975};
+  \item coeficientes de atividade fixos, em vez de um modelo de Pitzer \cite{pitzer1973};
+  \item coeficiente de dano $\beta_{\mathrm{BaSO_4}}$ não calibrado experimentalmente;
+  \item um único mecanismo (\ce{BaSO4}), sem \ce{SrSO4}, \ce{CaSO4}, \ce{CaCO3}, halita,
+        finos e dano biológico;
+  \item três cenários avaliados um a um, por simulação direta.
+\end{itemize}
+Os cinco primeiros pontos são tratados pela camada física e pela validação experimental
+(Seção~\ref{sec:metodo}). O último é a motivação central do projeto: com várias águas,
+dezenas de íons e variáveis operacionais, o espaço de composições possíveis não pode ser
+explorado cenário a cenário. É preciso um modelo substituto rápido e um método de
+otimização que busque a composição ótima nesse espaço.
+
+% ---------------------------------------------------------------------
+\section{Questão científica e hipótese}\itemedital{2.16 X}
+
+\textbf{Questão:} é possível determinar, de forma adaptativa ao longo da vida do poço, as
+condições ótimas da água de injeção (composição, nível de tratamento e vazão) que
+preservam a injetividade, dadas as propriedades da rocha, as águas disponíveis (formação,
+produzida e do mar) e as condições operacionais?
+
+\textbf{H1 (científica).} A injetividade de poços injetores resulta de mecanismos de dano
+acoplados (incrustação, migração de finos e filtração), cuja resposta depende
+conjuntamente da composição da água, das propriedades da rocha (mineralogia, teor de
+argilas, permeabilidade) e das condições operacionais (vazão, pressão e temperatura), e
+é cumulativa ao longo do tempo. Consequentemente: (a) as condições ótimas da água não
+podem ser definidas por limites independentes para cada parâmetro, como fazem os
+critérios empíricos atuais; e (b) uma política de RL condicionada ao estado da rocha, da
+operação e do dano acumulado preserva a injetividade de forma significativamente
+superior à reotimização periódica míope, que escolhe a cada período a melhor condição
+para o momento atual sem considerar suas consequências futuras.
+
+\textit{Critérios de refutação:} (a) se condições definidas por limites independentes
+atingirem desempenho equivalente ao da política, o acoplamento entre mecanismos não é
+relevante na prática; (b) se a política não superar a reotimização míope em pelo menos
+\pendente{X\%} nos cenários avaliados, a dependência da trajetória não é relevante, e a
+otimização estática periódica é suficiente.
+
+\textbf{H2 (tecnológica).} A política treinada em simulação pode ser transferida para o
+controle de uma unidade física de condicionamento de água, mantendo a água produzida
+dentro da janela ótima, com erro de composição inferior a \pendente{Y\%}, sob
+perturbações na qualidade das águas de entrada.
+
+% ---------------------------------------------------------------------
+\section{Objetivos}\itemedital{2.16 XI}
+
+\subsection{Objetivo geral}
+Desenvolver e validar um agente de aprendizado por reforço profundo que, a partir de dados
+geológicos, geoquímicos e operacionais, determine dinamicamente as condições ótimas da
+água de injeção, incluindo sua composição química e a vazão de injeção, para mitigar a incrustação, a migração de argilas e os demais
+mecanismos de dano à formação, e embarcar a política treinada no controle de uma unidade
+de condicionamento que produza essa água.
+
+\subsection{Objetivos específicos}
+\begin{enumerate}[label=OE\arabic*.]
+  \item Construir uma base de dados integrada de composição de águas, mineralogia,
+        variáveis de processo e injetividade.
+  \item Desenvolver um modelo físico acoplado dos mecanismos de dano (iônico, finos,
+        filtração e biológico).
+  \item Treinar e validar um modelo substituto informado por física que reproduza a
+        dinâmica do dano e sirva de ambiente rápido para o treinamento do agente.
+  \item Treinar um agente de RL com restrições que determine, ao longo da vida do poço, a
+        composição ótima da água de injeção, e compará-lo com os critérios empíricos e
+        com a otimização estática (otimização bayesiana).
+  \item Validar as recomendações em ensaios de deslocamento em testemunho e com dados de
+        campo.
+  \item Incorporar o tratamento por membranas (ePTFE/PTFE) como variável de decisão e avaliar
+        sua viabilidade técnico-econômica.
+  \item Projetar e construir uma unidade de condicionamento de água em bancada e
+        embarcar nela a política treinada, demonstrando em malha fechada a produção da
+        água na composição recomendada.
+\end{enumerate}
+
+% ---------------------------------------------------------------------
+\section{Metodologia}\label{sec:metodo}\itemedital{2.16 XII}
+
+\subsection{Formulação do problema}
+A escolha da composição é formulada como problema de decisão sequencial: a água injetada
+hoje determina o dano acumulado amanhã, e as águas disponíveis mudam com o aumento do
+corte de água. O poço injetor é representado por um modelo dinâmico (camadas 1 e 2), que
+funciona como ambiente para um agente de RL, em um processo de decisão de Markov:
+\begin{itemize}
+  \item \textbf{Estado:} tipo de rocha, mineralogia, teor de argilas, porosidade e
+        permeabilidade; composição das águas de formação, produzida e do mar
+        disponíveis; condições operacionais (pressão de bombeamento, pressão de fundo e
+        temperatura); histórico de injetividade e estimativa do dano acumulado.
+  \item \textbf{Ação:} condições da água injetada, incluindo a composição (razão de
+        mistura água produzida:água do mar, nível de dessulfatação, salinidade e
+        composição catiônica, remoção de óleo e sólidos, dosagem de inibidor e biocida,
+        tratamento por membrana) e as condições de transporte (vazão de injeção).
+  \item \textbf{Recompensa:} manutenção da injetividade descontada do custo de
+        tratamento, de bombeamento e de intervenções.
+  \item \textbf{Restrições:} índices de saturação, salinidade e velocidade críticas para
+        estabilidade de argilas, limites de pressão de injeção e faixa de vazão
+        compatível com a reposição de volume do reservatório.
+\end{itemize}
+Nesta etapa, a vazão é tratada como variável de decisão do ponto de vista do dano no
+entorno do poço, dentro da faixa admissível pela gestão do reservatório; a vazão total
+do campo permanece como restrição externa.
+
+\subsection{Camada 1 -- Modelo físico}
+O ponto de partida é o modelo 1D reativo da Seção~\ref{sec:prelim}, que será estendido
+para: (i) geometria radial no entorno do poço; (ii) química multiespécie via PHREEQC com
+modelo de Pitzer (\ce{BaSO4}, \ce{SrSO4}, \ce{CaSO4}, \ce{CaCO3}, halita e \ce{FeS});
+(iii) cinética de precipitação de segunda ordem \cite{nancollas1975}; (iv) migração de
+finos dependente da salinidade e da composição catiônica; (v) filtração de sólidos e óleo
+com reboco externo; e (vi) módulo de dano biológico. Esse simulador gera os dados de
+treinamento do modelo substituto e serve de ambiente para os agentes de otimização.
+
+\subsection{Camada 2 -- Modelo substituto}
+Rede neural informada por física ou operador neural, treinada em simulações da camada 1,
+com quantificação de incerteza. \pendente{arquitetura e métricas de validação}
+
+\subsection{Camada 3 -- Agente de aprendizado por reforço}
+O agente é treinado por RL profundo com restrições (\pendente{algoritmo: PPO, SAC ou
+similar}) sobre o modelo substituto, com verificação periódica no simulador físico
+completo. As restrições (índices de saturação, limites de salinidade para estabilidade de
+argilas, limites operacionais do tratamento) são impostas por penalização e por um filtro
+de segurança que descarta ações fisicamente inviáveis. O treinamento cobre cenários de
+rocha, água de formação e histórico de produção amostrados da base de dados, para que a
+política generalize entre poços. Para testar a H1, a política é comparada com três
+referências: (i) os critérios empíricos atuais, baseados em limites independentes por
+parâmetro; (ii) a melhor condição fixa para todo o horizonte, obtida por otimização
+bayesiana; e (iii) a reotimização periódica míope, em que a otimização bayesiana é
+reaplicada a cada período com as condições do momento. A referência (iii) é a principal,
+pois isola o ganho atribuível à antecipação das consequências futuras.
+
+\subsection{Camada 4 -- Validação experimental e de campo}
+A validação combina ensaios em testemunho, realizados na infraestrutura do LRAP+
+(Seção~\ref{sec:infra}), e dados de campo:
+\begin{itemize}
+  \item \textbf{Escala de testemunho (coreflood).} Plugs caracterizados por porosidade,
+        permeabilidade e microtomografia são submetidos à injeção das águas candidatas,
+        com monitoramento contínuo de vazão e diferencial de pressão. Os efluentes são
+        analisados por cromatografia de íons para fechar o balanço das espécies
+        precipitadas, e a microtomografia pré e pós-ensaio localiza o dano. Esses ensaios
+        calibram $\beta$, $\tau_{prec}$ e os parâmetros de migração de finos, e geram dados
+        experimentais de injetividade com composição medida, que alimentam a base de
+        dados (OE1) e o modelo substituto.
+  \item \textbf{Escala de campo.} Dados públicos de vazão e pressão de poços injetores
+        (Volve, Equinor) e séries de injeção da ANP testam a capacidade de generalização do
+        modelo substituto.
+\end{itemize}
+A comparação central é entre a injetividade prevista e a medida para as composições
+recomendadas, frente às composições de referência (água do mar bruta e dessulfatada por
+nanofiltração).
+
+\subsection{Camada 5 -- Unidade de condicionamento de água controlada pelo agente}
+O projeto tem duas fases. Na primeira (camadas 1 a 4), o agente determina as condições
+ótimas da água, incluindo composição e vazão. Na segunda, de engenharia, a política
+treinada passa a acionar o controle de um equipamento que produz e mantém essas
+condições. Para isso, será construída uma unidade de bancada que produz a água
+de injeção a partir de correntes de entrada (água do mar sintética, água produzida
+sintética e água tratada por membrana). A unidade terá bombas de dosagem e mistura com
+inversores de frequência, aquecimento controlado da alimentação do módulo de membrana,
+sensores em linha (vazão, pressão, temperatura, condutividade e pH) e controle por CLP
+acoplado a um computador de borda que executa a política treinada.
+
+O controle é hierárquico: o agente define os pontos de ajuste de composição (proporções
+da mistura, grau de tratamento, dosagem), e as malhas locais do CLP acompanham esses
+pontos e mantêm os intertravamentos de segurança. Como íons como \ce{Ba^2+} e
+\ce{SO4^2-} não são medidos em linha, a composição é estimada por sensores virtuais a
+partir das medições contínuas e corrigida por análises periódicas de cromatografia de
+íons. A transferência da simulação para o equipamento é feita em etapas: identificação
+do modelo da unidade, ajuste fino da política nesse modelo e operação em malha fechada
+com perturbações controladas na qualidade das águas de entrada.
+
+% ---------------------------------------------------------------------
+\section{Metas, entregas verificáveis e indicadores}\itemedital{2.16 XIII, XVI; 6.3.4}
+
+\begin{longtable}{@{}p{0.05\textwidth}>{\raggedright\arraybackslash}p{0.43\textwidth}>{\raggedright\arraybackslash}p{0.37\textwidth}>{\centering\arraybackslash}p{0.07\textwidth}@{}}
+\toprule
+\textbf{\#} & \textbf{Meta / entrega} & \textbf{Indicador} & \textbf{Mês} \\
+\midrule
+\endhead
+M1 & Base de dados integrada (águas, mineralogia, operação, injetividade) & $\geq$ \pendente{N} registros com metadados completos; documentação pública & 9 \\
+M2 & Modelo físico acoplado multiespécie & Balanço de massa fechado em $\geq$ 99\%; reprodução de casos da literatura & 18 \\
+M3 & Modelo substituto validado & $R^2 \geq$ \pendente{0,95} em teste cego; tempo de avaliação $\geq 10^3\times$ menor que o simulador & 24 \\
+M4 & Agente de RL treinado e comparado com as três referências (teste da H1) & Ganho de injetividade sobre a reotimização míope $\geq$ \pendente{X\%} em $\geq$ \pendente{N} cenários de rocha, água e operação & 33 \\
+M5 & Ensaios de validação em testemunho & $\geq$ \pendente{N} corefloods com replicatas; erro de $\alpha$ previsto vs.\ medido $\leq$ \pendente{20\%}; fechamento do balanço iônico dos efluentes $\geq$ 90\% & 40 \\
+M6 & Unidade de condicionamento operando em malha fechada com a política embarcada (teste da H2) & Erro de composição em relação ao ponto de ajuste $\leq$ \pendente{Y\%}; resposta a perturbações na água de entrada & 44 \\
+M7 & Ferramenta de apoio à decisão (código aberto) & Repositório versionado (código, dados e modelos) & 46 \\
+M8 & Produção científica & \pendente{nº artigos/congressos} & 48 \\
+\bottomrule
+\end{longtable}
+
+% ---------------------------------------------------------------------
+\section{Cronograma físico}\itemedital{2.16 XIV; Anexo 1 II.II-g}
+
+Os relatórios parciais condicionam as quatro parcelas do auxílio (item 8.4).
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}l*{8}{C}@{}}
+\toprule
+\textbf{Atividade} & \multicolumn{8}{c}{\textbf{Semestre}} \\
+ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+\midrule
+A1 Revisão e base de dados        & \X & \X &    &    &    &    &    &    \\
+A2 Modelo físico acoplado         &    & \X & \X &    &    &    &    &    \\
+A3 Modelo substituto              &    &    & \X & \X &    &    &    &    \\
+A4 Agente de RL                   &    &    &    & \X & \X & \X &    &    \\
+A5 Ensaios em testemunho          &    &    &    & \X & \X & \X & \X &    \\
+A6 Membranas como ação            &    &    &    &    &    & \X & \X &    \\
+A7 Validação com dados de campo   &    &    &    &    &    &    & \X & \X \\
+A8 Unidade de condicionamento     &    &    &    &    & \X & \X & \X & \X \\
+A9 Divulgação científica          & \X & \X & \X & \X & \X & \X & \X & \X \\
+\midrule
+Relatório parcial / parcela       &    & R1 &    & R2 &    & R3 &    & RF \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+% ---------------------------------------------------------------------
+\section{Resultados esperados}\itemedital{2.16 XV}
+\pendente{descrever resultados científicos, tecnológicos e de formação}
+
+% ---------------------------------------------------------------------
+\section{Riscos técnico-científicos e mitigação}\itemedital{2.16 XVII}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}XXl@{}}
+\toprule
+\textbf{Risco} & \textbf{Mitigação} & \textbf{Nível} \\
+\midrule
+Poucos dados de injetividade com composição medida & Dados sintéticos calibrados em ensaios próprios; Volve & Alto \\
+Parâmetros do modelo físico incertos ($\beta$, $\tau_{prec}$, $\gamma$) & Calibração em ensaios em testemunho; análise de sensibilidade; incerteza propagada ao substituto & Médio \\
+Modelos biológicos pouco validados & Tratar como módulo opcional; ensaios dedicados & Médio \\
+Custo computacional do treinamento de RL & Modelo substituto; GPU dedicada & Médio \\
+Política de RL fora do domínio físico válido & RL com restrições e filtro de segurança; verificação no simulador completo & Médio \\
+Diferença entre simulação e equipamento (\textit{sim-to-real}) & Identificação do modelo da unidade, ajuste fino da política e controle hierárquico com malhas locais no CLP & Médio \\
+Composição iônica não medida em linha & Sensores virtuais a partir de condutividade, pH e vazões, corrigidos por cromatografia de íons & Médio \\
+Acesso a testemunhos e águas reais & Plugs de afloramento análogos e salmouras sintéticas de composição controlada; caracterização no LRAP+ & Médio \\\bottomrule
+\end{tabularx}
+\end{center}
+
+% ---------------------------------------------------------------------
+\section{Formação de recursos humanos}\itemedital{2.16 XVIII; critério 3}
+\begin{itemize}
+  \item Uma bolsa CAPES de doutorado (48 meses), com tese dedicada aos modelos
+        substitutos informados por física e às estratégias de otimização (OE3 e OE4).
+        O proponente será credenciado como orientador no PPG antes da indicação do
+        bolsista (item 8.12.1.1), prevista para os 3 primeiros meses de vigência.
+        \pendente{perfil do candidato e plano de trabalho detalhado}
+  \item Coorientações de iniciação científica e TCC. \pendente{}
+  \item Disciplina ou minicurso sobre IA aplicada a reservatórios. \pendente{}
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\section{Infraestrutura existente e necessária}\label{sec:infra}\itemedital{2.16 XIX; Anexo 1 G, II.II-h}
+
+\textbf{Existente.} Os ensaios de validação e a extração de dados experimentais serão
+realizados no LRAP+ (COPPE/UFRJ), que dispõe de:
+\begin{itemize}
+  \item sistema de coreflood HPHT para injeção de salmouras em plugs de rocha, com
+        monitoramento de vazão e diferencial de pressão;
+  \item poropermeâmetro Weatherford DV-4000 para porosidade e permeabilidade absoluta;
+  \item microtomografia de raios X TESCAN CoreTom para caracterização do espaço poroso
+        antes e depois dos ensaios;
+  \item cromatografia de íons e cromatografia gasosa para análise dos efluentes;
+  \item infraestrutura para preparação e caracterização de salmouras e fluidos.
+\end{itemize}
+
+\textbf{Necessária.} Estação de trabalho com GPU dedicada ao treinamento dos modelos
+substitutos e dos agentes de RL, que demandam milhares de episódios de simulação, e
+material de consumo para salmouras, plugs e análises (Seção~\ref{sec:orcamento}).
+
+% ---------------------------------------------------------------------
+\section{Redes e colaborações nacionais e internacionais}\itemedital{2.16 XX}
+\begin{itemize}
+  \item LRAP+ (COPPE/UFRJ): ensaios de coreflood, caracterização petrofísica e análise
+        química de efluentes.
+  \item \pendente{parceiros da indústria e grupos externos, nacionais e internacionais}
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\section{Impacto esperado e público beneficiado}\itemedital{2.16 XXI; Anexo 1 E}
+\begin{itemize}
+  \item Científico: \pendente{}
+  \item Tecnológico e econômico: redução de intervenções e de custo de tratamento. \pendente{}
+  \item Ambiental: menor descarte de água produzida e uso mais racional de químicos.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\section{Contribuição para o desenvolvimento do Estado do Rio de Janeiro}\itemedital{2.16 XXII; critério 4}
+\pendente{Bacia de Campos, pré-sal, cadeia de óleo e gás fluminense}
+
+% ---------------------------------------------------------------------
+\section{Estratégia de integração e fixação institucional}\itemedital{2.17; 1.4}
+\begin{itemize}
+  \item Inserção na instituição executora: \pendente{}
+  \item Linha de pesquisa a ser criada: \pendente{nome da linha}
+  \item Integração ao PPG: \pendente{credenciamento como orientador}
+  \item Sustentabilidade após o apoio (Anexo 1 F): \pendente{novos editais, projetos com a indústria}
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\section{Plano de educação, comunicação, popularização e divulgação científica}\itemedital{2.18--2.20; critério 5}
+\pendente{ações para público não especializado: escolas, vídeos, redes, eventos}
+
+% ---------------------------------------------------------------------
+\section{Acesso e difusão dos resultados}\itemedital{Anexo 1 D}
+\pendente{código e dados abertos, publicações de acesso aberto}
+
+% ---------------------------------------------------------------------
+\section{Ética, gestão de dados e propriedade intelectual}\itemedital{2.16 XXVI; 12.20}
+\begin{itemize}
+  \item Dados de terceiros sob licença (Volve: CC BY-NC-SA 4.0).
+  \item Plano de gestão de dados: \pendente{repositório}
+  \item Propriedade intelectual: \pendente{possível proteção do método}
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\section{Orçamento detalhado e justificado}\label{sec:orcamento}\itemedital{2.16 XXV; 9; Anexo 1 H}
+
+Custeio e capital não podem ser remanejados após a concessão (item 9.8). Despesas de
+importação limitadas a 18\% do valor do bem.
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}lXrr@{}}
+\toprule
+\textbf{Grupo} & \textbf{Item e justificativa} & \textbf{Qtd.} & \textbf{Valor (R\$)} \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{Capital}} \\
+ & Estação de trabalho com GPU para treinamento (OE3, OE4) & 1 & \pendente{} \\
+ & Unidade de condicionamento (OE7): bombas com inversores, aquecimento, sensores em linha, CLP e computador de borda & 1 & \pendente{} \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{Custeio -- material de consumo}} \\
+ & Membranas, reagentes, sais para salmouras sintéticas & & \pendente{} \\
+ & Testemunhos / plugs de rocha & & \pendente{} \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{Custeio -- serviços de terceiros (PJ/PF eventual)}} \\
+ & Análises químicas (cromatografia iônica, ICP) & & \pendente{} \\
+ & Caracterização mineralógica (DRX, MEV) & & \pendente{} \\
+ & Manutenção de equipamentos & & \pendente{} \\
+\midrule
+ & \textbf{Total} & & \pendente{$\le$ 200.000,00} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+% ---------------------------------------------------------------------
+{\small
+\bibliographystyle{unsrt}
+\bibliography{bib}
+}
+
+\end{document}
