@@ -1,0 +1,53 @@
+\babel@toc {brazil}{}\relax 
+\contentsline {section}{Resumo}{1}{Doc-Start}%
+\contentsline {section}{\numberline {1}Justificativa e diagnóstico da situação atual}{1}{section.1}%
+\contentsline {section}{\numberline {2}Estado da arte}{2}{section.2}%
+\contentsline {section}{\numberline {3}Resultados preliminares e autonomia científica do proponente}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Modelo}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Resultados}{4}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Estudo preliminar de sensibilidade}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Limitações e ligação com o projeto}{5}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Questão científica, tecnológica ou de inovação e hipóteses}{6}{section.4}%
+\contentsline {section}{\numberline {5}Objetivos}{6}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Objetivo geral}{6}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Objetivos específicos}{6}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Metodologia}{7}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Formulação: decisão sequencial sob observação parcial}{7}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Etapa 1 -- Modelo físico do dano}{8}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Etapa 2 -- Análise de sensibilidade global}{8}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Etapa 3 -- Ensaios no LRAP+ e identificação por PINN inversa}{8}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Etapa 4 -- Modelo substituto}{8}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Etapa 5 -- Agente de aprendizado por reforço}{9}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Quantificação de incerteza e critérios estatísticos}{9}{subsection.6.7}%
+\contentsline {subsection}{\numberline {6.8}Etapa 6 -- Estimação em operação e validação com dados de campo}{10}{subsection.6.8}%
+\contentsline {subsection}{\numberline {6.9}Etapa 7 -- Validação experimental da política e software}{10}{subsection.6.9}%
+\contentsline {section}{\numberline {7}Metas, entregas verificáveis e indicadores de acompanhamento}{11}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Metas e entregas verificáveis}{11}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Indicadores de acompanhamento}{11}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Cronograma físico em meses corridos}{12}{section.8}%
+\contentsline {section}{\numberline {9}Resultados esperados}{13}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Resultados científicos}{13}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Resultados tecnológicos}{13}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Formação e consolidação institucional}{13}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Produção científica}{13}{subsection.9.4}%
+\contentsline {section}{\numberline {10}Riscos técnico-científicos e estratégias de mitigação}{13}{section.10}%
+\contentsline {section}{\numberline {11}Formação de recursos humanos}{14}{section.11}%
+\contentsline {section}{\numberline {12}Infraestrutura existente e necessária}{14}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Infraestrutura existente}{14}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Infraestrutura necessária}{14}{subsection.12.2}%
+\contentsline {section}{\numberline {13}Redes e colaborações nacionais e internacionais}{14}{section.13}%
+\contentsline {section}{\numberline {14}Impacto esperado e público beneficiado}{14}{section.14}%
+\contentsline {subsection}{\numberline {14.1}Impacto científico, tecnológico, social, econômico e ambiental}{14}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}Público beneficiado e impacto institucional}{15}{subsection.14.2}%
+\contentsline {section}{\numberline {15}Contribuição para o desenvolvimento do Estado do Rio de Janeiro}{15}{section.15}%
+\contentsline {section}{\numberline {16}Estratégia de integração e fixação institucional}{15}{section.16}%
+\contentsline {subsection}{\numberline {16.1}Inserção na instituição executora}{15}{subsection.16.1}%
+\contentsline {subsection}{\numberline {16.2}Linha de pesquisa a ser criada}{15}{subsection.16.2}%
+\contentsline {subsection}{\numberline {16.3}Infraestrutura disponibilizada}{15}{subsection.16.3}%
+\contentsline {subsection}{\numberline {16.4}Integração ao Programa de Pós-Graduação}{15}{subsection.16.4}%
+\contentsline {subsection}{\numberline {16.5}Plano de sustentabilidade após o término do apoio}{15}{subsection.16.5}%
+\contentsline {section}{\numberline {17}Plano de educação, comunicação, popularização e divulgação científica}{16}{section.17}%
+\contentsline {section}{\numberline {18}Estratégia de acesso, preservação e difusão dos resultados}{16}{section.18}%
+\contentsline {section}{\numberline {19}Orçamento detalhado e justificado}{16}{section.19}%
+\contentsline {section}{\numberline {20}Ética, integridade, biossegurança, propriedade intelectual e dados de pesquisa}{17}{section.20}%
+\contentsline {section}{Referências}{17}{section.20}%

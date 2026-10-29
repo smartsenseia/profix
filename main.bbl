@@ -103,11 +103,80 @@ M.~C.~M. Bezerra, F.~F. Ros{\'a}rio, A.~A. Rocha, and C.~L. Sombra.
   United Kingdom, 2004.
 \newblock SPE-87452-MS.
 
-\bibitem{sharma1987}
-M.~M. Sharma and Y.~C. Yortsos.
-\newblock Transport of particulate suspensions in porous media: Model
-  formulation.
-\newblock {\em AIChE Journal}, 33(10):1636--1643, 1987.
+\bibitem{arain2026review}
+Aftab~Hussain Arain, Ahmad~Salam Farooqi, and Rayed~S. Alshareef.
+\newblock Advancing low-salinity waterflooding for improved oil recovery:
+  Mechanisms, machine learning, and future directions.
+\newblock {\em Petroleum Research}, 2026.
+\newblock Article in press; accepted 30 July 2026.
+
+\bibitem{shafiei2022}
+Ali Shafiei, Afshin Tatar, Mahsheed Rayhani, Madiyar Kairat, and Ingkar
+  Askarova.
+\newblock Artificial neural network, support vector machine, decision tree,
+  random forest, and committee machine intelligent system help to improve
+  performance prediction of low salinity water injection in carbonate oil
+  reservoirs.
+\newblock {\em Journal of Petroleum Science and Engineering}, 219:111046, 2022.
+
+\bibitem{tatar2021lswf}
+A.~Tatar, I.~Askarova, A.~Shafiei, and M.~Rayhani.
+\newblock Data-driven connectionist models for performance prediction of low
+  salinity waterflooding in sandstone reservoirs.
+\newblock {\em ACS Omega}, 6:32304--32326, 2021.
+
+\bibitem{kondori2021lswf}
+J.~Kondori, M.~I. Miah, S.~Zendehboudi, F.~Khan, and D.~Heagle.
+\newblock Hybrid connectionist models to assess recovery performance of low
+  salinity water injection.
+\newblock {\em Journal of Petroleum Science and Engineering}, 197:107833, 2021.
+
+\bibitem{hybrid2023}
+Leonardo~Fonseca Reginato, Rafael dos~Santos Gioria, and Marcio~Augusto
+  Sampaio.
+\newblock Hybrid machine learning for modeling the relative permeability
+  changes in carbonate reservoirs under engineered water injection.
+\newblock {\em Energies}, 16(13):4849, 2023.
+
+\bibitem{mercado2020}
+Diana Mercado~Sierra, Argenis Alvarez~Rojas, and Victor Salazar~Araque.
+\newblock Low-salinity water-injection optimization in the namorado field using
+  compositional simulation and artificial intelligence, 2020.
+\newblock SPE 198995; ver tambem resumo no Journal of Petroleum Technology,
+  doi:10.2118/0920-0065-JPT.
+
+\bibitem{lowpolymer2024}
+A new insight into pilot-scale development of low-salinity polymer flood using
+  an intelligent-based proxy model coupled with particle swarm optimization.
+\newblock Scientific Reports, 2024.
+
+\bibitem{yuan2026connectivity}
+Shibao Yuan, Jia Song, Fengxiang Yang, Haiyan Jiang, and Zihan Ren.
+\newblock Research on the connectivity between injection and production wells
+  in the hongqian in situ combustion project in xinjiang based on machine
+  learning.
+\newblock {\em Engineering Applications of Artificial Intelligence},
+  172:114337, 2026.
+
+\bibitem{sac2025}
+Research on intelligent regulation of layered water injection based on
+  reinforcement learning sac algorithm.
+\newblock Scientific Reports, 2025.
+
+\bibitem{multiagent2025}
+Scalable and adaptive injection-production control in reservoirs via a
+  multi-agent reinforcement learning approach, 2025.
+
+\bibitem{graph2026}
+Spatiotemporal graph-based surrogate modeling and deep reinforcement learning
+  for multi-layer injection-production decision in waterflood reservoirs, 2026.
+
+\bibitem{raissi2019}
+M.~Raissi, P.~Perdikaris, and G.~E. Karniadakis.
+\newblock Physics-informed neural networks: A deep learning framework for
+  solving forward and inverse problems involving nonlinear partial differential
+  equations.
+\newblock {\em Journal of Computational Physics}, 378:686--707, 2019.
 
 \bibitem{bedrikovetsky2001}
 P.~Bedrikovetsky, D.~Marchesin, F.~Shecaira, A.~L. Souza, P.~V. Milanez, and
@@ -117,34 +186,16 @@ P.~Bedrikovetsky, D.~Marchesin, F.~Shecaira, A.~L. Souza, P.~V. Milanez, and
 \newblock {\em Journal of Petroleum Science and Engineering},
   32(2--4):167--177, 2001.
 
-\bibitem{bedrikovetsky2005}
-P.~G. Bedrikovetsky, D.~R. Fonseca, M.~J. da~Silva, M.~F. da~Silva, A.~G.
-  Siqueira, A.~L.~S. de~Souza, and C.~Furtado.
-\newblock Well-history-based prediction of injectivity decline in offshore
-  waterfloods.
-\newblock In {\em SPE Latin American and Caribbean Petroleum Engineering
-  Conference}, Rio de Janeiro, Brazil, 2005.
-\newblock SPE-93885-MS.
+\bibitem{stumm1996}
+W.~Stumm and J.~J. Morgan.
+\newblock {\em Aquatic Chemistry: Chemical Equilibria and Rates in Natural
+  Waters}.
+\newblock John Wiley \& Sons, New York, 3 edition, 1996.
 
-\bibitem{paiva2007}
-R.~O. Paiva, P.~Bedrikovetsky, C.~Furtado, A.~G. Siqueira, and A.~L.~S. Souza.
-\newblock A comprehensive model for injectivity decline prediction during
-  {PWRI}.
-\newblock In {\em European Formation Damage Conference}, 2007.
-\newblock SPE-107866-MS.
-
-\bibitem{yuan2012}
-H.~Yuan, S.~Nielsen, A.~Shapiro, and P.~Bedrikovetsky.
-\newblock A new comprehensive approach for predicting injectivity decline
-  during waterflooding.
-\newblock In {\em SPE Europec/EAGE Annual Conference}, 2012.
-\newblock SPE-154509-MS.
-
-\bibitem{yerramilli2015}
-R.~C. Yerramilli, P.~L.~J. Zitha, S.~S. Yerramilli, and P.~Bedrikovetsky.
-\newblock A novel water-injectivity model and experimental validation with
-  {CT}-scanned corefloods.
-\newblock {\em SPE Journal}, 20(6):1200--1211, 2015.
+\bibitem{oddo1994}
+J.~E. Oddo and M.~B. Tomson.
+\newblock Why scale forms and how to predict it.
+\newblock {\em SPE Production \& Facilities}, 9(1):47--54, 1994.
 
 \bibitem{bader2007}
 M.~S.~H. Bader.
@@ -160,63 +211,6 @@ M.~Al-Salmi, M.~Laqbaqbi, S.~Al-Obaidani, R.~S. Al-Maamari, M.~Khayet, and
   produced water.
 \newblock {\em Desalination}, 494:114678, 2020.
 
-\bibitem{pawar2022}
-R.~Pawar, Z.~Zhang, and R.~D. Vidic.
-\newblock Laboratory and pilot-scale studies of membrane distillation for
-  desalination of produced water from {P}ermian {B}asin.
-\newblock {\em Desalination}, 537:115853, 2022.
-
-\bibitem{hsieh2023}
-I.-M. Hsieh, B.~Lin, H.~Mahbub, Z.~Carter, M.~Jebur, Y.~Cao, J.~Brownlow,
-  R.~Wickramasinghe, and M.~Malmali.
-\newblock Field demonstration of intensified membrane distillation for treating
-  oilfield produced waters from unconventional wells.
-\newblock {\em Desalination}, 564:116771, 2023.
-
-\bibitem{scirep2023}
-{PENDENTE}.
-\newblock Optimization of salinity and composition of injected low salinity
-  water into sandstone reservoirs with minimum scale deposition.
-\newblock {\em Scientific Reports}, 2023.
-\newblock PENDENTE: completar autores, volume e número do artigo.
-
-\bibitem{carbonate2021}
-{PENDENTE}.
-\newblock Optimization of injection water composition during low salinity water
-  flooding in carbonate rocks: A numerical simulation study.
-\newblock {\em Journal of Petroleum Science and Engineering}, 2021.
-\newblock PENDENTE: completar autores, volume e páginas.
-
-\bibitem{miftakhov2020}
-R.~Miftakhov et~al.
-\newblock Deep reinforcement learning: Reservoir optimization from pixels,
-  2020.
-\newblock PENDENTE: confirmar veículo, ano e coautores.
-
-\bibitem{abdalla2025}
-R.~Abdalla, N.~Agban, C.~L{\"u}ddeke, D.~Sui, and P.~Jaeger.
-\newblock Multi agent physics informed reinforcement learning for waterflooding
-  optimization.
-\newblock {\em Franklin Open}, 2025.
-
-\bibitem{nascimento2022}
-K.~J.~S. Nascimento.
-\newblock Double deep {Q}-network no m{\'e}todo de recupera{\c{c}}{\~a}o
-  avan{\c{c}}ada inje{\c{c}}{\~a}o de {\'a}gua em um campo de petr{\'o}leo.
-\newblock Master's thesis, Universidade Federal do Rio Grande do Norte, Natal,
-  2022.
-
-\bibitem{stumm1996}
-W.~Stumm and J.~J. Morgan.
-\newblock {\em Aquatic Chemistry: Chemical Equilibria and Rates in Natural
-  Waters}.
-\newblock John Wiley \& Sons, New York, 3 edition, 1996.
-
-\bibitem{oddo1994}
-J.~E. Oddo and M.~B. Tomson.
-\newblock Why scale forms and how to predict it.
-\newblock {\em SPE Production \& Facilities}, 9(1):47--54, 1994.
-
 \bibitem{nancollas1975}
 G.~H. Nancollas and S.~T. Liu.
 \newblock Crystal growth and dissolution of barium sulfate.
@@ -227,5 +221,310 @@ K.~S. Pitzer.
 \newblock Thermodynamics of electrolytes. {I}. {T}heoretical basis and general
   equations.
 \newblock {\em The Journal of Physical Chemistry}, 77(2):268--277, 1973.
+
+\bibitem{morris1991}
+M.~D. Morris.
+\newblock Factorial sampling plans for preliminary computational experiments.
+\newblock {\em Technometrics}, 33(2):161--174, 1991.
+
+\bibitem{sobol2001}
+I.~M. Sobol'.
+\newblock Global sensitivity indices for nonlinear mathematical models and
+  their {Monte Carlo} estimates.
+\newblock {\em Mathematics and Computers in Simulation}, 55(1--3):271--280,
+  2001.
+
+\bibitem{fuks2020}
+O.~Fuks and H.~A. Tchelepi.
+\newblock Limitations of physics informed machine learning for nonlinear
+  two-phase transport in porous media.
+\newblock {\em Journal of Machine Learning for Modeling and Computing},
+  1(1):19--37, 2020.
+
+\bibitem{lu2021deeponet}
+L.~Lu, P.~Jin, G.~Pang, Z.~Zhang, and G.~E. Karniadakis.
+\newblock Learning nonlinear operators via {DeepONet} based on the universal
+  approximation theorem of operators.
+\newblock {\em Nature Machine Intelligence}, 3:218--229, 2021.
+
+\bibitem{li2021fno}
+Z.~Li, N.~Kovachki, K.~Azizzadenesheli, B.~Liu, K.~Bhattacharya, A.~Stuart, and
+  A.~Anandkumar.
+\newblock Fourier neural operator for parametric partial differential
+  equations.
+\newblock In {\em International Conference on Learning Representations (ICLR)},
+  2021.
+
+\bibitem{lutter2021rvi}
+M.~Lutter, S.~Mannor, J.~Peters, D.~Fox, and A.~Garg.
+\newblock Robust value iteration for continuous control tasks.
+\newblock In {\em Robotics: Science and Systems XVII}, 2021.
+
+\bibitem{mcuav2022}
+{PENDENTE}.
+\newblock Monte {C}arlo-based reinforcement learning control for unmanned
+  aerial vehicle systems.
+\newblock {\em Neurocomputing}, 2022.
+\newblock PENDENTE: completar autores e volume.
+
+\bibitem{rizvi2021tnnls}
+S.~A.~A. Rizvi, A.~Pertzborn, and Z.~Lin.
+\newblock Reinforcement learning based optimal tracking control under
+  unmeasurable disturbances with application to {HVAC} systems.
+\newblock {\em IEEE Transactions on Neural Networks and Learning Systems},
+  2021.
+
+\bibitem{rizvi2023jas}
+S.~A.~A. Rizvi and A.~Pertzborn.
+\newblock Development of a bias compensating {Q}-learning controller for a
+  multi-zone {HVAC} facility.
+\newblock {\em IEEE/CAA Journal of Automatica Sinica}, 10(8), 2023.
+
+\bibitem{fang2022hvac}
+X.~Fang, G.~Gong, G.~Li, L.~Chun, P.~Peng, W.~Li, X.~Shi, and X.~Chen.
+\newblock Deep reinforcement learning optimal control strategy for temperature
+  setpoint real-time reset in multi-zone building {HVAC} system.
+\newblock {\em Applied Thermal Engineering}, 212:118552, 2022.
+
+\bibitem{alsayed2026}
+K.~Al~Sayed, A.~Boodi, R.~Sadeghian~Broujeny, and K.~Beddiar.
+\newblock Multi-objective {HVAC} control using modified hybrid deep
+  reinforcement learning algorithms.
+\newblock {\em Energy and AI}, 25:100850, 2026.
+
+\bibitem{iccc2024nav}
+{PENDENTE}.
+\newblock Develop a navigation approach for mobile robots based on the
+  distributional deep reinforcement learning framework.
+\newblock In {\em 10th International Conference on Computer and Communications
+  (ICCC)}, 2024.
+\newblock PENDENTE: completar autores e páginas.
+
+\bibitem{achiam2017}
+J.~Achiam, D.~Held, A.~Tamar, and P.~Abbeel.
+\newblock Constrained policy optimization.
+\newblock In {\em International Conference on Machine Learning (ICML)}, pages
+  22--31, 2017.
+
+\bibitem{nakamura2005}
+Y.~Nakamura, T.~Mori, Y.~Tokita, T.~Shibata, and S.~Ishii.
+\newblock Off-policy natural policy gradient method for a biped walking using a
+  {CPG} controller.
+\newblock {\em Journal of Robotics and Mechatronics}, 17(6):636--644, 2005.
+
+\bibitem{centurelli2022}
+A.~Centurelli, L.~Arleo, A.~Rizzo, S.~Tolu, C.~Laschi, and E.~Falotico.
+\newblock Closed-loop dynamic control of a soft manipulator using deep
+  reinforcement learning.
+\newblock {\em IEEE Robotics and Automation Letters}, 7(2):4741--4748, 2022.
+
+\bibitem{ray2019}
+A.~Ray, J.~Achiam, and D.~Amodei.
+\newblock Benchmarking safe exploration in deep reinforcement learning.
+\newblock Technical report, OpenAI, 2019.
+
+\bibitem{jobe2025hvac}
+{PENDENTE}.
+\newblock Reinforcement learning based optimal control of multiple building
+  {HVAC} systems and analysis of influencing factors.
+\newblock {\em Journal of Building Engineering}, 2025.
+\newblock PENDENTE: completar autores e volume.
+
+\bibitem{zhong2022designs}
+X.~Zhong, Z.~Zhang, R.~Zhang, and C.~Zhang.
+\newblock End-to-end deep reinforcement learning control for {HVAC} systems in
+  office buildings.
+\newblock {\em Designs}, 6(3):52, 2022.
+
+\bibitem{du2021hvac}
+Y.~Du, H.~Zandi, O.~Kotevska, K.~Kurte, J.~Munk, K.~Amasyali, E.~Mckee, and
+  F.~Li.
+\newblock Intelligent multi-zone residential {HVAC} control strategy based on
+  deep reinforcement learning.
+\newblock {\em Applied Energy}, 281:116117, 2021.
+
+\bibitem{fan2024uuv}
+Y.~Fan, H.~Dong, X.~Zhao, and P.~Denissenko.
+\newblock Path-following control of unmanned underwater vehicle based on an
+  improved {TD3} deep reinforcement learning.
+\newblock {\em IEEE Transactions on Control Systems Technology},
+  32(5):1904--1919, 2024.
+
+\bibitem{benhazem2026}
+Z.~Ben~Hazem.
+\newblock A fuzzy-{TD3} hybrid reinforcement learning framework for robust
+  trajectory tracking of the {Mitsubishi RV-2AJ} robotic arm.
+\newblock {\em Scientific Reports}, 16:12269, 2026.
+
+\bibitem{silvestri2024}
+A.~Silvestri, D.~Coraci, S.~Brandi, A.~Capozzoli, E.~Borkowski, J.~K{\"o}hler,
+  D.~Wu, M.~N. Zeilinger, and A.~Schlueter.
+\newblock Real building implementation of a deep reinforcement learning
+  controller to enhance energy efficiency and indoor temperature control.
+\newblock {\em Applied Energy}, 368:123447, 2024.
+
+\bibitem{wang2025dce}
+X.~Wang, N.~Mahdavi, S.~Sethuvenkatraman, and S.~West.
+\newblock An environment-adaptive {SAC}-based {HVAC} control of single-zone
+  residential and office buildings.
+\newblock {\em Data-Centric Engineering}, 6:e3, 2025.
+
+\bibitem{elagroudi2025}
+T.~El-Agroudi, F.~G. Maurer, J.~A. Olsen, and K.~Alexis.
+\newblock In-flight attitude control of a quadruped using deep reinforcement
+  learning.
+\newblock In {\em Proceedings of The 8th Conference on Robot Learning}, volume
+  270 of {\em Proceedings of Machine Learning Research}, pages 5014--5029,
+  2025.
+
+\bibitem{hu2019sym}
+B.~Hu, J.~Li, J.~Yang, H.~Bai, S.~Li, Y.~Sun, and X.~Yang.
+\newblock Reinforcement learning approach to design practical adaptive control
+  for a small-scale intelligent vehicle.
+\newblock {\em Symmetry}, 11(9):1139, 2019.
+
+\bibitem{ifac2025pilco}
+{PENDENTE}.
+\newblock Experimental application of soft-constrained model-based
+  reinforcement learning to a real underactuated robot.
+\newblock {\em IFAC-PapersOnLine}, 2025.
+\newblock PENDENTE: confirmar título, autores e páginas.
+
+\bibitem{ye2025mbrl}
+M.~Ye and A.~H. Elsheikh.
+\newblock Model-based reinforcement learning for active flow control.
+\newblock {\em Physics of Fluids}, 37(9):093363, 2025.
+
+\bibitem{wu2023daydreamer}
+P.~Wu, A.~Escontrela, D.~Hafner, P.~Abbeel, and K.~Goldberg.
+\newblock {DayDreamer}: World models for physical robot learning.
+\newblock In {\em Proceedings of The 6th Conference on Robot Learning}, volume
+  205 of {\em Proceedings of Machine Learning Research}, pages 2226--2240,
+  2023.
+
+\bibitem{harrold2022}
+D.~J.~B. Harrold, J.~Cao, and Z.~Fan.
+\newblock Renewable energy integration and microgrid energy trading using
+  multi-agent deep reinforcement learning.
+\newblock {\em Applied Energy}, 318:119151, 2022.
+
+\bibitem{yun2025ro}
+B.~Yun, J.~Shim, J.~Moon, S.~Lee, K.~Jeong, and K.~H. Cho.
+\newblock Towards autonomous operation of two-stage reverse osmosis water
+  treatment system with multi-agent reinforcement learning.
+\newblock {\em Desalination}, 609:118870, 2025.
+
+\bibitem{dcmg2025}
+{PENDENTE}.
+\newblock Multiagent deep reinforcement learning-based distributed control
+  strategy for energy management in {DC} microgrid.
+\newblock {\em Computers and Electrical Engineering}, 2025.
+\newblock PENDENTE: confirmar título, autores e volume.
+
+\bibitem{qiu2023}
+D.~Qiu, Y.~Wang, T.~Zhang, M.~Sun, and G.~Strbac.
+\newblock Hierarchical multi-agent reinforcement learning for repair crews
+  dispatch control towards multi-energy microgrid resilience.
+\newblock {\em Applied Energy}, 336:120826, 2023.
+
+\bibitem{he2025disaiql}
+L.~He, X.~Qi, D.~Chen, Z.~Li, and X.~Tan.
+\newblock {DiSA-IQL}: Offline reinforcement learning for robust soft robot
+  control under distribution shifts, 2025.
+\newblock arXiv:2510.00358.
+
+\bibitem{nair2020awac}
+A.~Nair, A.~Gupta, M.~Dalal, and S.~Levine.
+\newblock {AWAC}: Accelerating online reinforcement learning with offline
+  datasets, 2020.
+\newblock arXiv:2006.09359.
+
+\bibitem{yang2022hrl}
+X.~Yang, Z.~Ji, J.~Wu, Y.-K. Lai, C.~Wei, G.~Liu, and R.~Setchi.
+\newblock Hierarchical reinforcement learning with universal policies for
+  multistep robotic manipulation.
+\newblock {\em IEEE Transactions on Neural Networks and Learning Systems},
+  33(9):4727--4741, 2022.
+
+\bibitem{engappai2023hrl}
+{PENDENTE}.
+\newblock Hierarchical reinforcement learning with adaptive scheduling for
+  robot control.
+\newblock {\em Engineering Applications of Artificial Intelligence}, 2023.
+\newblock PENDENTE: completar autores e volume.
+
+\bibitem{wan2025hrl}
+H.~Wan, Y.~Tian, C.~Wang, X.~Luan, H.~R. Karimi, and F.~Liu.
+\newblock Aperiodic speed tracking control of unmanned sightseeing vehicles
+  based on hierarchical reinforcement learning.
+\newblock {\em International Journal of Systems Science}, 56(10):2343--2356,
+  2025.
+
+\bibitem{nachum2018hiro}
+O.~Nachum, S.~Gu, H.~Lee, and S.~Levine.
+\newblock Data-efficient hierarchical reinforcement learning.
+\newblock In {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  2018.
+
+\bibitem{nasir2022}
+Y.~Nasir and L.~J. Durlofsky.
+\newblock Deep reinforcement learning for optimal well control in subsurface
+  systems with uncertain geology, 2022.
+\newblock arXiv:2203.13375.
+
+\bibitem{gum2008}
+{JCGM}.
+\newblock Evaluation of measurement data -- guide to the expression of
+  uncertainty in measurement ({JCGM} 100:2008).
+\newblock Technical report, Joint Committee for Guides in Metrology, 2008.
+
+\bibitem{gums12008}
+{JCGM}.
+\newblock Evaluation of measurement data -- supplement 1 to the {GUM}:
+  Propagation of distributions using a {Monte Carlo} method ({JCGM} 101:2008).
+\newblock Technical report, Joint Committee for Guides in Metrology, 2008.
+
+\bibitem{lakshminarayanan2017}
+B.~Lakshminarayanan, A.~Pritzel, and C.~Blundell.
+\newblock Simple and scalable predictive uncertainty estimation using deep
+  ensembles.
+\newblock In {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  2017.
+
+\bibitem{efron1993}
+B.~Efron and R.~J. Tibshirani.
+\newblock {\em An Introduction to the Bootstrap}.
+\newblock Chapman \& Hall/CRC, New York, 1993.
+
+\bibitem{yang2021bpinn}
+L.~Yang, X.~Meng, and G.~E. Karniadakis.
+\newblock {B-PINNs}: Bayesian physics-informed neural networks for forward and
+  inverse {PDE} problems with noisy data.
+\newblock {\em Journal of Computational Physics}, 425:109913, 2021.
+
+\bibitem{raue2009}
+A.~Raue, C.~Kreutz, T.~Maiwald, J.~Bachmann, M.~Schilling, U.~Klingm{\"u}ller,
+  and J.~Timmer.
+\newblock Structural and practical identifiability analysis of partially
+  observed dynamical models by exploiting the profile likelihood.
+\newblock {\em Bioinformatics}, 25(15):1923--1929, 2009.
+
+\bibitem{iso13528}
+{ISO}.
+\newblock {ISO} 13528:2022 -- statistical methods for use in proficiency
+  testing by interlaboratory comparison, 2022.
+\newblock International Organization for Standardization, Genebra.
+
+\bibitem{henderson2018}
+P.~Henderson, R.~Islam, P.~Bachman, J.~Pineau, D.~Precup, and D.~Meger.
+\newblock Deep reinforcement learning that matters.
+\newblock In {\em AAAI Conference on Artificial Intelligence}, pages
+  3207--3214, 2018.
+
+\bibitem{agarwal2021}
+R.~Agarwal, M.~Schwarzer, P.~S. Castro, A.~Courville, and M.~G. Bellemare.
+\newblock Deep reinforcement learning at the edge of the statistical precipice.
+\newblock In {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  2021.
 
 \end{thebibliography}
