@@ -302,6 +302,7 @@ Em conjunto, os trabalhos examinados demonstram avanços em três direções com
 A contribuição proposta é integrar um simulador físico de transporte reativo e dano à formação, PINNs para identificação de parâmetros e estimação de estados, um modelo substituto para acelerar a simulação e algoritmos de RL com restrições para otimização dinâmica da água de injeção. O ganho da decisão sequencial será comparado com especificações convencionais, composições fixas e reotimização periódica, com avaliação experimental independente por \textit{coreflooding}. A arquitetura será modular e oferecerá uma interface para futura integração com simuladores de recuperação de petróleo das operadoras, desde que estes sejam sensíveis à composição da água. Essa extensão poderá permitir a otimização conjunta de injetividade, recuperação e custos, mas não constitui objeto da validação experimental prevista neste projeto. A revisão bibliográfica sistematizada em Scopus, Web of Science e OnePetro será utilizada para aprofundar e atualizar a delimitação dessa originalidade.
 
 % ---------------------------------------------------------------------
+<<<<<<< HEAD
 \section{Trajetória do proponente e aderência ao projeto}\label{sec:prelim}
 A formação do proponente, integralmente realizada na Universidade Federal de Minas Gerais
 (UFMG), da graduação em Engenharia Mecânica ao doutorado, e a atuação posterior na COPPE/UFRJ
@@ -341,6 +342,118 @@ pesquisa própria, na qual a experiência em medição e incerteza orienta os en
 experiência em controle baseado em inteligência artificial fundamenta o agente de decisão e a
 atuação em tratamento de água de produção define o espaço de ações e o problema de aplicação.
 A produção científica completa consta do Currículo Lattes anexado.
+=======
+\section{Resultados preliminares e autonomia científica do proponente}\label{sec:prelim}
+\textbf{Capacidade de execução e liderança.} O proponente apresenta um modelo computacional preliminar desenvolvido como ponto de partida independente da pesquisa. Sua experiência em modelagem numérica, instrumentação experimental e inteligência artificial sustenta a coordenação da metodologia proposta. Os resultados a seguir são \textbf{simulações exploratórias não calibradas em campo}, e não validação de desempenho de um reservatório real. A produção científica, projetos coordenados e demais evidências documentais constarão do Currículo Lattes anexado.
+
+Em trabalho anterior, o proponente desenvolveu e implementou um modelo unidimensional
+reativo de declínio de injetividade que acopla a filtração profunda de partículas à
+precipitação de \ce{BaSO4}, aplicado a um cenário representativo do campo de Albacora
+(Bacia de Campos). Esse modelo é o ponto de partida da camada física do presente projeto.
+
+\subsection{Modelo}
+O balanço de partículas em suspensão ($c$) e retidas ($\sigma_p$) segue a formulação de
+filtração profunda \cite{pangsharma1997,bedrikovetsky2001}:
+\begin{equation}
+\frac{\partial (\phi c)}{\partial t} + u\,\frac{\partial c}{\partial x}
++ \frac{\partial \sigma_p}{\partial t} = 0, \qquad
+\frac{\partial \sigma_p}{\partial t} = \lambda\, u\, c .
+\end{equation}
+A tendência de precipitação é dada pela razão de saturação, com correção das atividades
+iônicas para força iônica da ordem de 2~mol/kg \cite{stumm1996,oddo1994}:
+\begin{equation}
+SR = \frac{\gamma_{\mathrm{Ba}} C_{\mathrm{Ba}}\,\gamma_{\mathrm{SO_4}} C_{\mathrm{SO_4}}}{K_{sp}} .
+\end{equation}
+A quantidade termodinamicamente precipitável $x_{eq}$ é a menor raiz de
+$\gamma_{\mathrm{Ba}}\gamma_{\mathrm{SO_4}}(C_{\mathrm{Ba}}-x_{eq})(C_{\mathrm{SO_4}}-x_{eq}) = K_{sp}$,
+limitada pelo reagente escasso, e a cinética é aproximada por relaxação de primeira ordem,
+$\Delta C_{prec} = x_{eq}\left[1-\exp(-\Delta t/\tau_{prec})\right]$. Os depósitos de partículas e de precipitado
+reduzem a porosidade e a permeabilidade por uma lei aditiva de dano:
+\begin{equation}
+\phi = \phi_0 - \sigma_p - \sigma_{\mathrm{BaSO_4}}, \qquad
+\frac{k(x,t)}{k_0} = \frac{1}{1 + \beta_p\,\sigma_p + \beta_{\mathrm{BaSO_4}}\,\sigma_{\mathrm{BaSO_4}}} .
+\end{equation}
+A métrica de injetividade é obtida pela integração da lei de Darcy sob vazão prescrita:
+\begin{equation}
+\Delta P(t) = \int_0^L \frac{\mu u}{k(x,t)}\,dx, \qquad
+\alpha(t) = \frac{I(t)}{I_0} = \frac{\Delta P_0}{\Delta P(t)} .
+\end{equation}
+O transporte iônico foi resolvido por esquema \textit{upwind} explícito de volumes finitos
+(CFL = 0,70, passo de tempo adaptativo à porosidade local), com verificação do balanço de
+massa de bário.
+
+\subsection{Resultados}
+Foram comparados três cenários de água injetada, com \ce{Ba^2+} = 250~mg/L na água de
+formação \cite{bezerra2004} e horizonte de 30 dias: (A) água do mar sem tratamento
+(2.800~mg/L de \ce{SO4^2-}); (B) nanofiltração em SRP (40~mg/L) \cite{bader2007}; e
+(C) destilação por membrana (0,5~mg/L) \cite{alsalmi2020}.
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}lCCCCC@{}}
+\toprule
+\textbf{Cenário} & \textbf{SR} & $\boldsymbol{\alpha}$\textbf{(24 h)} & $\boldsymbol{\alpha}$\textbf{(30 d)} & \textbf{\ce{BaSO4} (g)} & $\boldsymbol{\Delta P}$\textbf{ (bar)} \\
+\midrule
+A -- sem tratamento & $1{,}04\times10^{4}$ & 0,070 & 0,003 & 9,83 & 36,5 \\
+B -- NF/SRP        & $1{,}49\times10^{2}$ & 0,250 & 0,011 & 2,40 & 8,98 \\
+C -- MD            & 1,86                 & 0,983 & 0,654 & 0,014 & 0,153 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+
+A nanofiltração reduz a supersaturação em duas ordens de grandeza, mas mantém a mistura
+cerca de 150 vezes acima do limite de solubilidade, e a injetividade cai a cerca de 1\%
+em 30 dias. O permeado de MD leva o sistema à vizinhança do equilíbrio, deposita cerca de
+170 vezes menos barita e preserva 65\% da injetividade, com sobrepressão de injeção cerca
+de 60 vezes menor.
+
+\subsection{Estudo preliminar de sensibilidade}
+Para avaliar se a decisão sobre a água depende de parâmetros que não são medidos, o modelo
+foi submetido a uma análise exploratória de um parâmetro por vez (190 simulações; não equivalente à análise global), variando o
+coeficiente de dano $\beta_{\mathrm{BaSO_4}}$ ($10^4$ a $10^5$), o tempo de precipitação
+$\tau$ (60 a 6000~s), os coeficientes de atividade (0,5 a 2 vezes o valor de referência), o
+\ce{Ba^2+} da água de formação (50 a 500~mg/L) e a velocidade de Darcy (0,5 a
+$4\times10^{-5}$~m/s) (Figura~\ref{fig:sens}). Três resultados orientam o projeto. Primeiro,
+a ordenação entre as águas é robusta: com nanofiltração, $\alpha$(30~d) nunca supera 0,05
+em nenhuma variação, enquanto com destilação por membrana varia entre 0,33 e 1,0. Segundo,
+os parâmetros têm pesos muito diferentes: coeficientes de atividade, \ce{Ba^2+}, velocidade e
+$\beta$ dominam a resposta, enquanto $\tau$ tem efeito pequeno na faixa testada. Terceiro,
+para manter $\alpha \ge 0{,}8$ por 30 dias, o sulfato residual precisa ficar entre cerca de
+0,2 e 1,8~mg/L, conforme o \ce{Ba^2+}, duas ordens de grandeza abaixo do permeado de
+nanofiltração; com \ce{Ba^2+} acima de 150~mg/L, mesmo o permeado de membrana fica no
+limite, o que indica que a redução de sulfato precisa ser combinada com o controle da
+vazão. O estudo é local e restrito a um mecanismo; a etapa 2 da metodologia o estende a
+uma análise global no simulador completo.
+
+\begin{figure}[ht]
+\centering
+\IfFileExists{sensibilidade_albacora.pdf}{\includegraphics[width=0.77\textwidth]{sensibilidade_albacora.pdf}}{\fbox{\parbox{0.7\textwidth}{\centering Figura de sensibilidade: anexar sensibilidade\_albacora.pdf}}}
+\caption{Sensibilidade de $\alpha$(30~d) aos parâmetros não medidos no modelo 1D reativo,
+cenário Albacora. Acima: um parâmetro variado por vez, para nanofiltração (40~mg/L de
+sulfato) e destilação por membrana (0,5~mg/L). Abaixo, à esquerda: sulfato residual
+máximo para manter $\alpha \ge 0{,}8$ em 30 dias; à direita: faixa de $\alpha$ produzida por
+cada parâmetro.}
+\label{fig:sens}
+\end{figure}
+
+\subsection{Limitações e ligação com o projeto}
+O estudo preliminar utiliza parâmetros assumidos e não constitui calibração de campo. Suas limitações definem o escopo do projeto:
+\begin{itemize}
+  \item geometria 1D, enquanto o entorno do poço é radial;
+  \item cinética de primeira ordem, enquanto a cinética da barita pode apresentar dependência não linear da supersaturação \cite{nancollas1975};
+  \item coeficientes de atividade fixos, em vez de um modelo de Pitzer \cite{pitzer1973};
+  \item coeficiente de dano $\beta_{\mathrm{BaSO_4}}$ não calibrado experimentalmente;
+  \item um único mecanismo (\ce{BaSO4}), sem \ce{SrSO4}, \ce{CaSO4}, \ce{CaCO3}, halita,
+        finos e dano biológico;
+  \item três cenários avaliados um a um, por simulação direta.
+\end{itemize}
+Os pontos anteriores serão investigados progressivamente pelo simulador (etapa 1) e pela identificação de
+parâmetros com ensaios no LRAP+ (etapa 3), descritos na Seção~\ref{sec:metodo}. O último é a motivação central do projeto: com várias águas,
+dezenas de íons e variáveis operacionais, o espaço de composições possíveis não pode ser
+explorado cenário a cenário. É preciso um modelo substituto rápido e um método de
+otimização que busque a composição ótima nesse espaço.
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 
 % ---------------------------------------------------------------------
 \section{Questão científica, tecnológica ou de inovação e hipóteses}\itemedital{2.16 X}
@@ -351,14 +464,24 @@ preservam a injetividade, dadas as propriedades da rocha, as águas disponíveis
 produzida e do mar) e as condições operacionais, mesmo quando parte dos parâmetros que
 governam o dano não é medida diretamente?
 
+<<<<<<< HEAD
 \textbf{Hipótese 1 (identificabilidade).} Os parâmetros do dano que não são medidos rotineiramente
+=======
+\textbf{H0 (identificabilidade).} Os parâmetros do dano que não são medidos rotineiramente
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 (coeficientes de filtração e de dano, constantes cinéticas, salinidade e velocidade
 críticas de desprendimento de finos) são identificáveis a partir de ensaios de
 deslocamento com tomadas de pressão intermediárias, análise do efluente e microtomografia,
 por meio de redes neurais informadas por física (PINN) em formulação inversa; o modelo
+<<<<<<< HEAD
 calibrado prevê ensaios não usados na calibração com erro inferior a 15\% \cite{bulau1997}.
 
 \textbf{Hipótese 2 (científica).} A injetividade de poços injetores pode resultar de mecanismos de dano
+=======
+calibrado prevê ensaios não usados na calibração com erro inferior a 15\%.
+
+\textbf{H1 (científica).} A injetividade de poços injetores pode resultar de mecanismos de dano
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 acoplados (incrustação, migração de finos, filtração, dano biológico), cuja resposta depende
 conjuntamente da composição da água, das propriedades da rocha (mineralogia, teor de
 argilas, estrutura porosa) e das condições operacionais (vazão, pressão e temperatura), e
@@ -372,6 +495,7 @@ para o momento atual sem considerar suas consequências futuras.
 \textit{Critérios de refutação:} (a) se condições definidas por limites independentes
 atingirem desempenho equivalente ao da política, o acoplamento entre mecanismos não é
 relevante na prática; (b) se a política não superar a reotimização míope em pelo menos
+<<<<<<< HEAD
 5\% \cite{jansen2009clrm} nos cenários avaliados, a dependência da trajetória não é
 relevante, e a otimização estática periódica é suficiente.
 
@@ -387,6 +511,22 @@ a Hipótese 2 usa esses parâmetros para testar o valor da decisão sequencial; 
 verifica em ensaios se as decisões tomadas em simulação se sustentam no meio poroso real. Se a
 Hipótese 1 for apenas parcialmente confirmada, a Hipótese 2 continua testável, com incerteza
 paramétrica maior incorporada ao treinamento do agente.
+=======
+5\% nos cenários avaliados, a dependência da trajetória não é relevante, e a
+otimização estática periódica é suficiente.
+
+\textbf{H2 (validação experimental).} A política obtida no ambiente de simulação,
+transposta para a escala de laboratório, preserva a injetividade medida em coreflood
+melhor que as estratégias de referência, e o ambiente prevê a injetividade medida com erro
+inferior a 15\%. \textit{Critério de refutação:} se a ordenação medida das sequências
+diferir da prevista, ou o erro exceder 15\%, o ambiente não é confiável para decidir fora
+da faixa em que foi calibrado.
+
+As hipóteses são encadeadas: H0 fornece parâmetros calibrados e sua incerteza; H1 usa
+esses parâmetros para testar o valor da decisão sequencial; H2 verifica em ensaios
+se as decisões tomadas em simulação se sustentam no meio poroso real. Se H0 for apenas parcialmente confirmada, H1 continua
+testável, com incerteza paramétrica maior incorporada ao treinamento do agente.
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 
 % ---------------------------------------------------------------------
 \section{Objetivos}\itemedital{2.16 XI}
@@ -404,7 +544,11 @@ experimentalmente essas decisões em ensaios de coreflood. A ferramenta será es
   \item Construir uma base de dados integrada de composição de águas, propriedades de
         rocha, variáveis operacionais e injetividade, a partir da literatura, de dados
         públicos de campo e dos ensaios do projeto.
+<<<<<<< HEAD
   \item Desenvolver um simulador radial multiespécie do
+=======
+  \item Estender o modelo físico do proponente para um simulador radial multiespécie do
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
         dano (incrustação, finos e argilas, filtração e reboco, dano biológico), capaz de
         separar o dano real da queda aparente por pressurização do reservatório.
   \item Realizar análise de sensibilidade global do simulador para identificar os
@@ -412,18 +556,30 @@ experimentalmente essas decisões em ensaios de coreflood. A ferramenta será es
         mínimo de caracterização por rocha.
   \item Projetar e executar ensaios de deslocamento no LRAP+ e identificar os parâmetros
         não medidos por PINN em formulação inversa, com quantificação de incerteza e
+<<<<<<< HEAD
         validação cega (teste da Hipótese 1).
+=======
+        validação cega (teste da H0).
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
   \item Desenvolver um modelo substituto informado por física, parametrizado pelas
         propriedades da rocha, pelas condições operacionais e pelas ações, que sirva de
         ambiente rápido de treinamento.
   \item Treinar um agente de RL com restrições, robusto à incerteza paramétrica, que
         determine ao longo da vida do poço a composição, o tratamento (incluindo
         membranas de ePTFE/PTFE) e a vazão de injeção, e compará-lo com as referências
+<<<<<<< HEAD
         definidas (teste da Hipótese 2).
   \item Desenvolver um estimador do dano em operação, alimentado por dados de pressão e
         vazão de poços, e testá-lo com dados públicos de campo.
   \item Validar a política em ensaios de coreflood no LRAP+ e disponibilizar simulador,
         modelos e agentes como software aberto de apoio à decisão, com interface modular documentada para eventual integração futura de modelos externos de recuperação de petróleo (teste da Hipótese 3 limitado à injetividade).
+=======
+        definidas (teste da H1).
+  \item Desenvolver um estimador do dano em operação, alimentado por dados de pressão e
+        vazão de poços, e testá-lo com dados públicos de campo.
+  \item Validar a política em ensaios de coreflood no LRAP+ e disponibilizar simulador,
+        modelos e agentes como software aberto de apoio à decisão, com interface modular documentada para eventual integração futura de modelos externos de recuperação de petróleo (teste da H2 limitado à injetividade).
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 \end{enumerate}
 
 % ---------------------------------------------------------------------
@@ -449,6 +605,10 @@ como recompensa.}
 \end{figure}
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 \subsection{Formulação: decisão sequencial sob observação parcial}
 A escolha da água é formulada como um processo de decisão de Markov parcialmente
 observável. Em cada período $t$ (dias a semanas), o estado do sistema é
@@ -486,9 +646,13 @@ parâmetros identificados na etapa 3. A vazão é variável de decisão do ponto
 dano no entorno do poço; a vazão total do campo permanece como restrição externa. Nesta pesquisa, a recompensa se limita à preservação da injetividade e aos custos e restrições associados. Uma interface de acoplamento será definida para que, em aplicação futura, modelos de recuperação de petróleo de terceiros possam fornecer uma métrica adicional de desempenho ou uma restrição produtiva. Tal extensão exigirá modelos capazes de representar a influência da composição da água sobre a recuperação, compatibilidade entre as escalas temporais e validação própria; não integra o treinamento nem a avaliação experimental previstos neste projeto.
 
 \subsection{Etapa 1 -- Modelo físico do dano}
+<<<<<<< HEAD
 O simulador parte das formulações clássicas de filtração profunda
 \cite{pangsharma1997,bedrikovetsky2001} e de precipitação de sulfatos em misturas de águas
 incompatíveis \cite{bedrikovetsky2009} e incorpora:
+=======
+O ponto de partida é o modelo 1D reativo da Seção~\ref{sec:prelim}, estendido para:
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 (i) geometria radial no entorno do poço, com completação canhoneada ou em poço aberto;
 (ii) química multiespécie via PHREEQC com modelo de Pitzer (\ce{BaSO4}, \ce{SrSO4},
 \ce{CaSO4}, \ce{CaCO3}, halita e \ce{FeS}), incluindo a variação de temperatura e
@@ -510,7 +674,12 @@ a decisão: a ordenação de águas candidatas e as curvas de decisão (por exem
 sulfato residual máximo para manter $\alpha \ge 0{,}8$). Os resultados definem quais
 parâmetros precisam ser calibrados, quais podem ser fixados em valores de literatura,
 qual o conjunto mínimo de caracterização por rocha e quais variáveis podem ser
+<<<<<<< HEAD
 retiradas do estado do agente.
+=======
+retiradas do estado do agente. Um estudo preliminar desse tipo está na
+Seção~\ref{sec:prelim}.
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 
 \subsection{Etapa 3 -- Ensaios no LRAP+ e identificação por PINN inversa}
 \textbf{Desenho dos ensaios.} Antes de cada campanha, uma análise de identificabilidade
@@ -527,7 +696,11 @@ depois os combinam. Em cada ensaio são registrados vazão, diferencial de press
 quando o porta-testemunho permitir, em tomadas intermediárias, concentrações no efluente por
 cromatografia de íons ao longo do tempo e microtomografia antes e depois, com
 replicatas nas condições prioritárias. Esta é a primeira de duas campanhas: seus ensaios
+<<<<<<< HEAD
 são divididos em um conjunto de calibração e um de teste cego da Hipótese 1; a segunda campanha é
+=======
+são divididos em um conjunto de calibração e um de teste cego da H0; a segunda campanha é
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 dedicada à validação da política (etapa 7).
 
 \textbf{PINN inversa.} Uma rede neural representa os campos de concentração, de depósito e
@@ -547,7 +720,11 @@ perdas, treinamento progressivo no tempo e difusão artificial controlada, e os 
 serão comparados com a calibração clássica por mínimos quadrados sobre o simulador de
 volumes finitos.
 
+<<<<<<< HEAD
 \textbf{Validação cega (Hipótese 1).} Os ensaios são divididos em um conjunto de calibração e um
+=======
+\textbf{Validação cega (H0).} Os ensaios são divididos em um conjunto de calibração e um
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 conjunto de teste, com composições e vazões diferentes. O modelo calibrado prevê o
 conjunto de teste sem novo ajuste, e compara-se a injetividade, o perfil de depósito na
 microtomografia e a composição do efluente.
@@ -640,7 +817,11 @@ de uma política recorrente. Um filtro de segurança projeta as ações proposta
 viável definida pelas restrições $g_k$. O tratamento por membranas de ePTFE/PTFE entra
 como ação, com custo energético associado ao aproveitamento de calor residual.
 
+<<<<<<< HEAD
 Para testar a Hipótese 2, a política é comparada, nos mesmos cenários de rocha, água e operação,
+=======
+Para testar a H1, a política é comparada, nos mesmos cenários de rocha, água e operação,
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 com três referências: (i) os critérios empíricos atuais, baseados em limites
 independentes por parâmetro; (ii) a melhor condição fixa para todo o horizonte, obtida por
 otimização bayesiana; e (iii) a reotimização periódica míope, em que a otimização
@@ -652,7 +833,11 @@ comparação está na Seção~\ref{sec:incerteza}.
 
 \subsection{Quantificação de incerteza e critérios estatísticos}\label{sec:incerteza}
 
+<<<<<<< HEAD
 \textbf{Incerteza dos parâmetros identificados pela PINN (Hipótese 1).} A incerteza de cada
+=======
+\textbf{Incerteza dos parâmetros identificados pela PINN (H0).} A incerteza de cada
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 parâmetro $\theta_j$ será avaliada segundo o Guia para a Expressão da Incerteza de Medição
 (GUM) \cite{gum2008} e seu Suplemento 1 \cite{gums12008}, com as componentes:
 
@@ -689,7 +874,11 @@ bayesiana da PINN \cite{yang2021bpinn} será usada como verificação independen
 distribuição \textit{a posteriori}. A identificabilidade é verificada por perfis de
 verossimilhança \cite{raue2009}.
 
+<<<<<<< HEAD
 \textbf{Demonstração estatística da Hipótese 1.} Três testes, em sequência:
+=======
+\textbf{Demonstração estatística da H0.} Três testes, em sequência:
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 \begin{enumerate}[label=(\roman*)]
   \item \textit{Recuperação em dados sintéticos:} cerca de 200 conjuntos gerados pelo simulador
         com $\theta$ conhecido e ruído compatível com as incertezas tipo A e tipo B; o
@@ -705,7 +894,11 @@ verossimilhança \cite{raue2009}.
         transformada integral de probabilidade.
 \end{enumerate}
 
+<<<<<<< HEAD
 \textbf{Comparação entre algoritmos de RL e teste da Hipótese 2.} O desempenho de algoritmos de RL
+=======
+\textbf{Comparação entre algoritmos de RL e teste da H1.} O desempenho de algoritmos de RL
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 varia muito entre sementes aleatórias \cite{henderson2018}. Cada algoritmo será treinado
 com pelo menos 10 sementes e avaliado em um conjunto de cenários de teste não
 usados no treino, com $\theta$ sorteado por Monte Carlo de $p(\theta\mid\mathcal{D})$. A
@@ -718,7 +911,11 @@ de desempenho e probabilidade de melhoria entre pares de algoritmos. Comparaçõ
 (mesmos cenários) usam o teste de postos sinalizados de Wilcoxon com correção de Holm para
 múltiplas comparações. O algoritmo escolhido é o de maior IQM cujo intervalo de confiança
 não se sobreponha ao dos demais, ou, havendo sobreposição, o de menor taxa de violação de
+<<<<<<< HEAD
 restrições e menor CVaR. A Hipótese 2 é considerada confirmada se a probabilidade de melhoria da
+=======
+restrições e menor CVaR. A H1 é considerada confirmada se a probabilidade de melhoria da
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 política sobre a reotimização míope tiver intervalo de 95\% acima de 0,5 e o ganho mediano
 superar 5\%.
 
@@ -746,8 +943,13 @@ ensaios, para que a comparação seja cega em relação aos resultados. Medem-se
 os perfis de pressão, a composição do efluente e o depósito por microtomografia.
 
 Dois resultados são extraídos. O primeiro é a ordenação medida das três sequências, que
+<<<<<<< HEAD
 testa experimentalmente a Hipótese 2 nas condições ensaiadas. O segundo é o erro entre a
 injetividade prevista pelo ambiente de simulação e a medida (teste da Hipótese 3), avaliado com as
+=======
+testa experimentalmente a H1 nas condições ensaiadas. O segundo é o erro entre a
+injetividade prevista pelo ambiente de simulação e a medida (teste da H2), avaliado com as
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 incertezas expandidas da medição e da previsão pelo erro normalizado $E_n$
 (Seção~\ref{sec:incerteza}).
 
@@ -774,11 +976,19 @@ pela indústria.
 M1 & Base de dados integrada (águas, rocha, operação, injetividade) & $\geq$ 300 registros com metadados completos; documentação pública & 9 \\
 M2 & Simulador radial multiespécie & Balanço de massa fechado em $\geq$ 99\%; reprodução de casos da literatura & 15 \\
 M3 & Análise de sensibilidade global & Índices de Sobol para todos os parâmetros não medidos; conjunto mínimo de caracterização definido & 18 \\
+<<<<<<< HEAD
 M4 & Parâmetros identificados por PINN inversa (teste da Hipótese 1) & 1 campanha de coreflood com replicatas (calibração e teste cego); erro na previsão cega de $\alpha$ $\leq$ 15\%; fechamento do balanço iônico $\geq$ 90\% & 24 \\
 M5 & Modelo substituto validado & $R^2 \geq$ 0,95 em teste cego; avaliação $\geq 10^3\times$ mais rápida que o simulador & 26 \\
 M6 & Agente de RL robusto e comparado com as três referências (teste da Hipótese 2) & Ganho sobre a reotimização míope $\geq$ 5\% em $\geq$ 50 cenários de teste; correlação de Spearman da ordenação $\geq$ 0,8 & 34 \\
 M7 & Estimador do dano em operação & Separação entre dano e pressurização em dados de Volve; erro de previsão em janela futura $\leq$ 10\% & 38 \\
 M8 & Validação da política em coreflood (teste da Hipótese 3) & Sequência do agente com $\alpha$ final superior às de referência, em réplicas; erro do ambiente de simulação $\leq$ 15\% & 44 \\
+=======
+M4 & Parâmetros identificados por PINN inversa (teste da H0) & 1 campanha de coreflood com replicatas (calibração e teste cego); erro na previsão cega de $\alpha$ $\leq$ 15\%; fechamento do balanço iônico $\geq$ 90\% & 24 \\
+M5 & Modelo substituto validado & $R^2 \geq$ 0,95 em teste cego; avaliação $\geq 10^3\times$ mais rápida que o simulador & 26 \\
+M6 & Agente de RL robusto e comparado com as três referências (teste da H1) & Ganho sobre a reotimização míope $\geq$ 5\% em $\geq$ 50 cenários de teste; correlação de Spearman da ordenação $\geq$ 0,8 & 34 \\
+M7 & Estimador do dano em operação & Separação entre dano e pressurização em dados de Volve; erro de previsão em janela futura $\leq$ 10\% & 38 \\
+M8 & Validação da política em coreflood (teste da H2) & Sequência do agente com $\alpha$ final superior às de referência, em réplicas; erro do ambiente de simulação $\leq$ 15\% & 44 \\
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 M9 & Ferramenta de apoio à decisão (código aberto) & Repositório versionado (código, dados e modelos) & 46 \\
 M10 & Produção científica (Seção~\ref{sec:resultados}) & 3 artigos submetidos a periódicos A1/A2 (P1--P3); 2 trabalhos completos apresentados no Rio Oil \& Gas (C1) e em evento da SPE (C2) & 20--46 \\
 \bottomrule
@@ -798,9 +1008,15 @@ correspondente ser concluída.
 \midrule
 \endhead
 R1 (mês 12) & M1 & Revisão sistemática concluída; simulador radial com módulo de incrustação implementado e balanço de massa verificado; plano experimental da campanha 1 definido pela análise de identificabilidade e ensaios iniciados; doutorando matriculado e iniciação científica selecionada; credenciamento no PEM; 2 ações em escolas \\
+<<<<<<< HEAD
 R2 (mês 24) & M2, M3, M4 & Número de corefloods da campanha 1 realizados com réplicas e dados depositados no Zenodo; erro da previsão cega da Hipótese 1; primeira versão do modelo substituto; trabalho C1 apresentado; disciplina eletiva ofertada; ações de divulgação acumuladas \\
 R3 (mês 36) & M5, M6 & Número de algoritmos triados e aprofundados; resultado estatístico da Hipótese 2 (IQM, probabilidade de melhoria); P1 e P2 submetidos; estimador aplicado aos dados de Volve; sequências e previsões da campanha 2 registradas antes dos ensaios; exame de qualificação do doutorando; primeira proposta a edital externo submetida \\
 RF (mês 48) & M7, M8, M9, M10 & Resultado da campanha 2 (teste da Hipótese 3); C2 apresentado e P3 submetido; software público com identificador permanente; tese em fase final; indicadores consolidados de divulgação (escolas, participantes, vídeos, acessos ao simulador) \\
+=======
+R2 (mês 24) & M2, M3, M4 & Número de corefloods da campanha 1 realizados com réplicas e dados depositados no Zenodo; erro da previsão cega da H0; primeira versão do modelo substituto; trabalho C1 apresentado; disciplina eletiva ofertada; ações de divulgação acumuladas \\
+R3 (mês 36) & M5, M6 & Número de algoritmos triados e aprofundados; resultado estatístico da H1 (IQM, probabilidade de melhoria); P1 e P2 submetidos; estimador aplicado aos dados de Volve; sequências e previsões da campanha 2 registradas antes dos ensaios; exame de qualificação do doutorando; primeira proposta a edital externo submetida \\
+RF (mês 48) & M7, M8, M9, M10 & Resultado da campanha 2 (teste da H2); C2 apresentado e P3 submetido; software público com identificador permanente; tese em fase final; indicadores consolidados de divulgação (escolas, participantes, vídeos, acessos ao simulador) \\
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 \bottomrule
 \end{longtable}
 }
@@ -994,17 +1210,29 @@ A11 Publicações e relatório final & Submissões em 20, 28, 36, 40 e 46; relat
         suposição nos modelos de injetividade (coeficientes de filtração e de dano,
         constantes cinéticas, salinidade e velocidade críticas), para as rochas e águas
         estudadas, e uma metodologia de identificação por PINN inversa validada em
+<<<<<<< HEAD
         ensaios cegos (Hipótese 1).
+=======
+        ensaios cegos (H0).
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
   \item Uma hierarquia, obtida por análise de sensibilidade global, dos fatores de água,
         rocha e operação que mais afetam a injetividade e a decisão sobre a água, com um
         conjunto mínimo de caracterização por rocha.
   \item Evidência quantitativa sobre o valor da decisão sequencial na escolha da água de
+<<<<<<< HEAD
         injeção (Hipótese 2): se, e em que condições, uma política que antecipa a evolução do dano
+=======
+        injeção (H1): se, e em que condições, uma política que antecipa a evolução do dano
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
         supera a reotimização periódica e os critérios empíricos. Um resultado negativo
         também é informativo, pois indicaria que métodos estáticos mais simples são
         suficientes.
   \item Evidência experimental, em coreflood, de que as decisões obtidas no ambiente de
+<<<<<<< HEAD
         simulação se sustentam no meio poroso real (Hipótese 3).
+=======
+        simulação se sustentam no meio poroso real (H2).
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 \end{itemize}
 
 \subsection{Resultados tecnológicos}
@@ -1045,10 +1273,17 @@ projeto e a tese de doutorado se organiza como coletânea desses artigos.
 \textbf{Tipo} & \textbf{Tema e contribuição} & \textbf{Veículo pretendido} & \textbf{Mês} \\
 \midrule
 C1 Congresso & Simulador radial multiespécie, sensibilidade global e curvas de decisão do sulfato residual admissível para campos da Bacia de Campos (etapas 1--2) & Rio Oil \& Gas Expo and Conference (IBP) & 20 \\
+<<<<<<< HEAD
 P1 Periódico A1/A2 & Identificação por PINN inversa dos parâmetros não medidos do dano, com corefloods do LRAP+, análise de identificabilidade e incerteza segundo o GUM (Hipótese 1; etapas 3--4) & SPE Journal; Water Resources Research; Journal of Computational Physics & 28 \\
 P2 Periódico A1/A2 & Escolha da água de injeção como decisão sequencial sob incerteza: comparação estatística das famílias de RL com reotimização míope e critérios empíricos (Hipótese 2; etapa 5) & Engineering Applications of Artificial Intelligence; Applied Energy; Geoenergy Science and Engineering & 36 \\
 C2 Congresso & Separação entre dano e pressurização em dados de campo (Volve) e avaliação da política em histórico real de injeção (etapa 6) & SPE International Conference on Formation Damage Control ou SPE ATCE & 40 \\
 P3 Periódico A1/A2 & Validação experimental em coreflood de políticas de RL para a água de injeção: sequência do agente contra estratégias de referência e erro do ambiente de simulação (Hipótese 3; etapa 7) & SPE Journal; Geoenergy Science and Engineering; Fuel & 46 \\
+=======
+P1 Periódico A1/A2 & Identificação por PINN inversa dos parâmetros não medidos do dano, com corefloods do LRAP+, análise de identificabilidade e incerteza segundo o GUM (H0; etapas 3--4) & SPE Journal; Water Resources Research; Journal of Computational Physics & 28 \\
+P2 Periódico A1/A2 & Escolha da água de injeção como decisão sequencial sob incerteza: comparação estatística das famílias de RL com reotimização míope e critérios empíricos (H1; etapa 5) & Engineering Applications of Artificial Intelligence; Applied Energy; Geoenergy Science and Engineering & 36 \\
+C2 Congresso & Separação entre dano e pressurização em dados de campo (Volve) e avaliação da política em histórico real de injeção (etapa 6) & SPE International Conference on Formation Damage Control ou SPE ATCE & 40 \\
+P3 Periódico A1/A2 & Validação experimental em coreflood de políticas de RL para a água de injeção: sequência do agente contra estratégias de referência e erro do ambiente de simulação (H2; etapa 7) & SPE Journal; Geoenergy Science and Engineering; Fuel & 46 \\
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 \bottomrule
 \end{tabularx}
 \end{center}
@@ -1145,7 +1380,12 @@ duas campanhas de ensaios no LRAP+ (Seção~\ref{sec:orcamento}).
         (acidificação, \textit{scale squeeze}, \textit{workover}), menor consumo elétrico de
         bombeamento pela menor sobrepressão de injeção, especificação de tratamento ajustada a
         cada poço em vez de superdimensionada, e manutenção da reposição de volume que sustenta
+<<<<<<< HEAD
         a recuperação de óleo. A modularidade permite eventual integração, por operadoras, de modelos de recuperação para avaliar compromissos entre injetividade e produção, sem que o projeto reivindique ganhos de recuperação não demonstrados.
+=======
+        a recuperação de óleo. A modularidade permite eventual integração, por operadoras, de modelos de recuperação para avaliar compromissos entre injetividade e produção, sem que o projeto reivindique ganhos de recuperação não demonstrados. No estudo preliminar, a escolha da água alterou a sobrepressão
+        de injeção em cerca de 60 vezes em 30 dias.
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
   \item \textbf{Ambiental:} maior reaproveitamento da água produzida por reinjeção, menor
         descarte no mar, dosagem de inibidores e biocidas ajustada à necessidade real, e menor
         consumo de energia por metro cúbico injetado.
@@ -1285,7 +1525,11 @@ Os valores apresentados são estimativas orçamentárias e não constituem compr
 \multicolumn{3}{@{}r}{\textit{Subtotal capital}} & 144.800,00 \\
 \midrule
 \multicolumn{4}{@{}l}{\textit{Custeio -- serviços de terceiros, pessoa jurídica (etapas 3 e 7; OE4, OE8)}} \\
+<<<<<<< HEAD
  & Serviço experimental de pessoa jurídica, sujeito à comprovação da possibilidade de contratação e orçamento: preparação e caracterização petrofísica dos plugs, corefloods com replicatas, cromatografia de íons do efluente, microtomografia antes e depois e mineralogia (DRX e MEV). Campanha 1: calibração e teste cego da Hipótese 1 (etapa 3); campanha 2: validação da política (Hipótese 3, etapa 7) & 2 & 50.000,00 \\
+=======
+ & Serviço experimental de pessoa jurídica, sujeito à comprovação da possibilidade de contratação e orçamento: preparação e caracterização petrofísica dos plugs, corefloods com replicatas, cromatografia de íons do efluente, microtomografia antes e depois e mineralogia (DRX e MEV). Campanha 1: calibração e teste cego da H0 (etapa 3); campanha 2: validação da política (H2, etapa 7) & 2 & 50.000,00 \\
+>>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 \midrule
 \multicolumn{4}{@{}l}{\textit{Custeio -- material de consumo}} \\
  & Teclado e mouse da estação de trabalho & 1 & 500,00 \\
