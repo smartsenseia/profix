@@ -145,7 +145,7 @@ Novembro de 2026
 $a_t$ & Ação no período $t$ (composição química da água injetada) \\
 $c$ & Concentração de partículas em suspensão [m$^3$/m$^3$] \\
 $c_i$ & Coeficiente de sensibilidade da grandeza de entrada $x_i$ \\
-$c_{\mathrm{bomb}},\,c_{\mathrm{int}}$ & Custos de bombeamento e de intervenção na recompensa \\
+$c_{\mathrm{adit}},\,c_{\mathrm{bomb}},\,c_{\mathrm{int}}$ & Custos de aditivos, de bombeamento e de intervenção na recompensa \\
 $C_{\mathrm{Ba}},\,C_{\mathrm{SO_4}}$ & Concentrações de \ce{Ba^2+} e \ce{SO4^2-} [mol/kg] \\
 $\Delta C_{prec}$ & Quantidade precipitada no passo de tempo [mol/kg] \\
 $d_t$ & Dano acumulado e sua distribuição radial \\
@@ -225,7 +225,7 @@ $\phi_{\mathrm{NN}}$ & Pesos da rede neural \\
 
 A reinjeção de água produzida, isoladamente ou misturada à água do mar tratada, é uma estratégia para a gestão da água e a manutenção da pressão em reservatórios de petróleo. Entretanto, a composição físico-química da água injetada pode comprometer a injetividade por mecanismos de dano à formação que interagem e evoluem ao longo do tempo, incluindo precipitação de incrustações minerais (\ce{BaSO4}, \ce{CaCO3} e \ce{SrSO4}), migração e inchamento de argilas, retenção de partículas e gotículas de óleo, formação de reboco e atividade microbiológica. A intensidade desses fenômenos depende da mineralogia, das propriedades petrofísicas e da estrutura porosa da rocha, da composição das águas de formação, produzida e do mar, bem como das condições operacionais do poço. Apesar dessas interdependências, a especificação da água de injeção frequentemente se apoia em análises de compatibilidade e critérios de tratamento avaliados separadamente, sem incorporar plenamente o caráter cumulativo do dano.
 
-Este projeto tem como objetivo desenvolver e validar uma metodologia computacional híbrida capaz de determinar e atualizar, ao longo da operação, a composição físico-química da água de injeção que melhor preserva a injetividade, respeitando restrições técnicas, econômicas e de segurança. A metodologia será organizada em sete etapas interdependentes: (i) desenvolvimento de um simulador físico de transporte reativo e evolução do dano à formação, com representação dos mecanismos geoquímicos, de retenção e de alteração da permeabilidade; (ii) análise de sensibilidade global e de identificabilidade para selecionar parâmetros dominantes e orientar os ensaios; (iii) realização de ensaios de \textit{coreflooding} para identificação inversa, por PINNs, dos parâmetros físico-químicos e constitutivos que governam o dano à formação, com calibração do simulador e quantificação das incertezas; (iv) treinamento e validação de modelos substitutos (surrogate model) que reproduzam a resposta dinâmica do simulador com menor custo computacional; (v) treinamento e comparação de algoritmos de aprendizado por reforço (RL) para definir sequencialmente as proporções de mistura entre fontes de água, a composição iônica e a salinidade, considerando os efeitos futuros das decisões; (vi) desenvolvimento e avaliação de um estimador de estados baseado em redes neurais informadas pela física (PINNs), com assimilação de dados operacionais de pressão, vazão e temperatura, para inferir a evolução dos mecanismos de dano à formação e quantificar as incertezas das estimativas; acoplamento desse estimador ao agente de aprendizado por reforço (RL), de modo que as decisões sobre a composição da água sejam atualizadas dinamicamente conforme o estado estimado do poço; e (vii) validação experimental da política desenvolvida por RL, mediante aplicação da sequência de composições recomendada em ensaio de \textit{coreflooding} e comparação entre a injetividade medida e a prevista pelo ambiente de simulação.
+Este projeto tem como objetivo desenvolver e validar uma metodologia computacional híbrida capaz de determinar e atualizar, ao longo da operação, a composição físico-química da água de injeção que melhor preserva a injetividade, respeitando restrições técnicas, econômicas e de segurança. A metodologia será organizada em sete etapas interdependentes: (i) desenvolvimento de um simulador físico de transporte reativo e evolução do dano à formação, com representação dos mecanismos geoquímicos, de retenção e de alteração da permeabilidade; (ii) análise de sensibilidade global e de identificabilidade para selecionar parâmetros dominantes e orientar os ensaios; (iii) realização de ensaios de \textit{coreflooding} para identificação inversa, por PINNs, dos parâmetros físico-químicos e constitutivos que governam o dano à formação, com calibração do simulador e quantificação das incertezas; (iv) treinamento e validação de modelos substitutos (surrogate model) que reproduzam a resposta dinâmica do simulador com menor custo computacional; (v) treinamento e comparação de algoritmos de aprendizado por reforço (RL) para definir sequencialmente as proporções de mistura entre fontes de água, a composição iônica, a salinidade e as concentrações de aditivos, considerando os efeitos futuros das decisões; (vi) desenvolvimento e avaliação de um estimador de estados baseado em redes neurais informadas pela física (PINNs), com assimilação de dados operacionais de pressão, vazão e temperatura, para inferir a evolução dos mecanismos de dano à formação e quantificar as incertezas das estimativas; acoplamento desse estimador ao agente de aprendizado por reforço (RL), de modo que as decisões sobre a composição da água sejam atualizadas dinamicamente conforme o estado estimado do poço; e (vii) validação experimental da política desenvolvida por RL, mediante aplicação da sequência de composições recomendada em ensaio de \textit{coreflooding} e comparação entre a injetividade medida e a prevista pelo ambiente de simulação.
 
 A avaliação incluirá a propagação das incertezas dos parâmetros, testes em cenários geológicos e geoquímicos não utilizados no treinamento e análise estatística do desempenho das políticas. Esperam-se como resultados modelos físicos calibrados, parâmetros de dano com incertezas quantificadas, evidências sobre as vantagens e limitações da otimização adaptativa e uma ferramenta computacional de apoio à decisão para recomendar composições de água específicas a diferentes cenários de reservatório. Como impactos potenciais, destacam-se a redução da perda de injetividade, da demanda energética de bombeamento e da necessidade de intervenções corretivas, favorecendo o reaproveitamento da água produzida e a eficiência operacional de campos petrolíferos.
 
@@ -354,13 +354,13 @@ deslocamento com medição de pressão na entrada, na saída e em tomadas interm
 longo do plugue, por meio de redes neurais informadas por física (PINN) em formulação inversa; o modelo
 calibrado prevê etapas de injeção não usadas na calibração com erro inferior a 15\% \cite{bulau1997}.
 
-\textbf{Hipótese 2 (científica).} A injetividade de poços injetores pode resultar de mecanismos de dano
+\textbf{Hipótese 2 (científica).} A perda de injetividade de poços injetores resulta de mecanismos de dano
 acoplados (incrustação, migração de finos, filtração, dano biológico), cuja resposta depende
 conjuntamente da composição da água, das propriedades da rocha (mineralogia, teor de
 argilas, estrutura porosa) e das condições operacionais (vazão, pressão e temperatura), e
 é cumulativa ao longo do tempo. Consequentemente: (a) as condições ótimas da água não
 podem ser definidas por limites independentes para cada parâmetro, como fazem os
-critérios empíricos atuais; e (b) uma política de RL condicionada ao estado da rocha, da
+critérios empíricos atuais; e (b), no ambiente de simulação calibrado experimentalmente, uma política de RL condicionada ao estado da rocha, da
 operação e do dano acumulado preserva a injetividade de forma significativamente
 superior à reotimização periódica míope, que escolhe a cada período a melhor condição
 para o momento atual sem considerar suas consequências futuras.
@@ -373,14 +373,15 @@ relevante, e a otimização estática periódica é suficiente.
 
 \textbf{Hipótese 3 (validação experimental).} A sequência de composições recomendada pela
 política, transposta para a escala de laboratório e aplicada em coreflood, mantém a
-injetividade medida acima do limite de intervenção $\alpha_{\min}$, e o ambiente de simulação
+injetividade medida acima do limite de intervenção $\alpha_{\min}$ (fixado em 0,8 na escala de laboratório), e o ambiente de simulação
 prevê essa injetividade com erro inferior a 15\% \cite{bulau1997}. \textit{Critério de
 refutação:} se a injetividade medida cair abaixo de $\alpha_{\min}$ ou o erro exceder 15\%, o
 ambiente não é confiável para decidir fora da faixa em que foi calibrado.
 
 As hipóteses são encadeadas: a Hipótese 1 fornece parâmetros calibrados e sua incerteza;
-a Hipótese 2 usa esses parâmetros para testar o valor da decisão sequencial; a Hipótese 3
-verifica em ensaios se as decisões tomadas em simulação se sustentam no meio poroso real. Se a
+a Hipótese 2 usa esses parâmetros para testar, no ambiente calibrado, o valor da decisão
+sequencial; a Hipótese 3 verifica experimentalmente a confiabilidade desse ambiente, isto é,
+se as decisões tomadas em simulação se sustentam no meio poroso real. Se a
 Hipótese 1 for apenas parcialmente confirmada, a Hipótese 2 continua testável, com incerteza
 paramétrica maior incorporada ao treinamento do agente.
 
@@ -412,7 +413,7 @@ experimentalmente essas decisões em ensaios de coreflood.
         propriedades da rocha, pelas condições operacionais e pelas ações, que sirva de
         ambiente rápido de treinamento.
   \item Treinar um agente de RL com restrições, robusto à incerteza paramétrica, que
-        determine ao longo da vida do poço a composição da água de injeção, e compará-lo com as referências
+        determine ao longo da vida do poço a composição da água de injeção, incluindo as concentrações de aditivos, e compará-lo com as referências
         definidas (teste da Hipótese 2).
   \item Desenvolver um estimador do dano em operação, alimentado por dados de pressão e
         vazão de poços, e testá-lo com dados públicos de campo.
@@ -460,12 +461,13 @@ radial. Parte de $\theta$ e todo $d_t$ não são observados diretamente e são e
 
 A ação $a_t$ define a composição química da água injetada: razão de mistura entre água
 produzida e água do mar, teor de sulfato, salinidade, razão \ce{Na+}/\ce{Ca^2+} e demais
-teores iônicos. A vazão e a temperatura de injeção fazem parte das condições operacionais
-$o_t$ e não são variáveis de decisão, e a forma de obter a composição recomendada (processos
-de tratamento e aditivos) está fora do escopo do agente. A recompensa combina a manutenção
-da injetividade com os custos:
+teores iônicos, além das concentrações de aditivos (inibidor de incrustação, biocida e
+sequestrante de oxigênio). A vazão e a temperatura de injeção fazem parte das condições
+operacionais $o_t$ e não são variáveis de decisão, e os processos de tratamento necessários
+para obter a composição recomendada estão fora do escopo do agente. A recompensa combina a
+manutenção da injetividade com os custos:
 \begin{equation}
-r_t = \alpha(t) - c_{\mathrm{bomb}}(\Delta P_t) - c_{\mathrm{int}}\,\mathbb{1}[\alpha(t) < \alpha_{\min}],
+r_t = \alpha(t) - c_{\mathrm{adit}}(a_t) - c_{\mathrm{bomb}}(\Delta P_t) - c_{\mathrm{int}}\,\mathbb{1}[\alpha(t) < \alpha_{\min}],
 \end{equation}
 e o agente busca a política $\pi$ que maximiza o retorno esperado sob as restrições
 $g_k(s_t,a_t)\le 0$:
@@ -474,8 +476,9 @@ $g_k(s_t,a_t)\le 0$:
 \quad \text{s.a.} \quad g_k(s_t,a_t)\le 0 .
 \end{equation}
 As restrições $g_k$ incluem índices de saturação, salinidade e velocidade críticas para
-estabilidade das argilas, pressão de fratura (manutenção do regime matricial) e limites de
-composição atingíveis a partir das águas disponíveis. A esperança sobre
+estabilidade das argilas, pressão de fratura (manutenção do regime matricial), faixas
+admissíveis de dosagem dos aditivos e limites de composição atingíveis a partir das águas
+disponíveis. A esperança sobre
 $p(\theta\mid\mathcal{D})$ incorpora a incerteza dos parâmetros identificados na etapa 3.
 Nesta pesquisa, a recompensa se limita à preservação da injetividade e aos custos e restrições associados. A interface para acoplamento futuro de modelos de recuperação de petróleo é descrita na etapa 7.
 
@@ -488,13 +491,13 @@ incompatíveis \cite{bedrikovetsky2009} e incorpora:
 \ce{CaSO4}, \ce{CaCO3}, halita e \ce{FeS}), incluindo a variação de temperatura e
 pressão ao longo da coluna e o aporte de ferro por corrosão; (iii) cinética de
 precipitação de segunda ordem na supersaturação \cite{nancollas1975}, com tempo de
-indução; (iv) migração e inchamento de argilas em função da salinidade, da composição
+indução e efeito da concentração de inibidor de incrustação; (iv) migração e inchamento de argilas em função da salinidade, da composição
 catiônica e da velocidade; (v) filtração profunda e reboco externo de sólidos e gotas,
 dependentes da razão entre o tamanho das partículas e o das gargantas
-\cite{pangsharma1997,bedrikovetsky2001}; (vi) módulo de dano biológico; e (vii) acoplamento
+\cite{pangsharma1997,bedrikovetsky2001}; (vi) módulo de dano biológico, com efeito da concentração de biocida; e (vii) acoplamento
 com um modelo simplificado de reservatório, para separar o dano no entorno do poço da
 queda aparente de injetividade por aumento da pressão média e redução de mobilidade.
-O simulador é verificado por balanço de massa e por reprodução de casos da literatura.
+O núcleo do simulador são a incrustação, a migração de finos e a filtração; os módulos de dano biológico e de acoplamento com o reservatório são incorporados de forma incremental. O simulador é verificado por balanço de massa e por reprodução de casos da literatura.
 
 \subsection{Etapa 2 -- Análise de sensibilidade global}
 O simulador depende de dezenas de parâmetros, parte dos quais não é medida rotineiramente,
@@ -536,7 +539,7 @@ de composição controlada. O programa experimental contratado compreende dois e
 em cada campanha. O ensaio da primeira campanha é conduzido em múltiplas etapas no mesmo
 plugue, cada uma com uma salmoura de composição diferente, definidas pela análise de
 identificabilidade para ativar sucessivamente os mecanismos de interesse (compatibilidade e
-incrustação, redução escalonada de salinidade para finos). Ao longo de todo o ensaio são
+incrustação, redução escalonada de salinidade para finos). As etapas de incrustação usam salmouras isentas de partículas, de modo que o dano medido seja atribuído à precipitação, localizada pelas tomadas intermediárias. Ao longo de todo o ensaio são
 registradas a vazão e as pressões absolutas e diferenciais na entrada, na saída e nas
 tomadas intermediárias. As etapas iniciais são usadas na calibração e as finais, no teste
 cego da Hipótese 1; o segundo ensaio é dedicado à validação da política (etapa 7). Ensaios
@@ -603,7 +606,7 @@ aprendizado por reforço, cada uma com um papel definido no projeto
  & \cite{schulman2015trpo,centurelli2022} \\
 \addlinespace
 \textbf{Ator-crítico:} A2C, A3C, DDPG, TD3, SAC, PPO
- & Candidatos principais para ações contínuas (proporções de mistura e teores iônicos), em versões com restrições por multiplicadores de Lagrange \cite{ray2019}.
+ & Candidatos principais para ações contínuas (proporções de mistura, teores iônicos e concentrações de aditivos), em versões com restrições por multiplicadores de Lagrange \cite{ray2019}.
  & \cite{tan2023pcod,haarnoja2018,schulman2017,sac2025,silvestri2024} \\
 \addlinespace
 \textbf{Baseados em modelo:} Dyna-Q, PILCO, PETS, MBPO, Dreamer, MuZero
@@ -611,7 +614,7 @@ aprendizado por reforço, cada uma com um papel definido no projeto
  & \cite{janner2019,hafner2020dreamer,zhang2026dosing,ye2025mbrl} \\
 \addlinespace
 \textbf{Multiagente:} Q-learning independente, MADDPG, VDN, QMIX, MAPPO
- & Dois usos: vários poços injetores que compartilham as mesmas fontes de água; e um agente por grupo de variáveis de composição (mistura, salinidade, teores iônicos), coordenados.
+ & Dois usos: vários poços injetores que compartilham as mesmas fontes de água; e um agente por grupo de variáveis de composição (mistura, salinidade, teores iônicos, aditivos), coordenados.
  & \cite{abdalla2025,rashid2018qmix,yun2025ro} \\
 \addlinespace
 \textbf{Offline:} BCQ, CQL, IQL, AWAC, TD3+BC
@@ -625,8 +628,9 @@ aprendizado por reforço, cada uma com um papel definido no projeto
 \end{tabularx}
 \end{table}
 
-A avaliação é feita em dois estágios, para que a comparação ampla caiba no orçamento
-computacional:
+O núcleo do estudo é formado pela iteração de valor (gabarito), pelo PPO com restrições, pelo
+SAC e por um método baseado em modelo; as demais famílias entram na triagem conforme o
+orçamento computacional permitir. A avaliação é feita em dois estágios:
 \begin{enumerate}[label=(\alph*)]
   \item \textit{Triagem:} um ou dois representantes de cada família são treinados em um
         ambiente reduzido (horizonte curto, menos cenários, três sementes). Na versão
@@ -689,15 +693,10 @@ u_c(\theta_j) = \sqrt{u_{A}^{2} + \sum_i c_i^{2}\,u_{B,i}^{2} + u_{\mathrm{mod}}
 \end{equation}
 com graus de liberdade efetivos pela fórmula de Welch-Satterthwaite e incerteza expandida
 $U = k\,u_c$, com $k$ da distribuição $t$ para 95\% de abrangência. Como o modelo é não
-linear, o resultado linearizado será confrontado com a propagação por Monte Carlo do
-Suplemento 1: as grandezas de entrada são sorteadas de suas distribuições, a
-identificação é repetida (sobre o substituto, para viabilizar $10^4$ a $10^5$ amostras) e
-obtém-se a distribuição de $\theta_j$, seu intervalo de abrangência de 95\% e a matriz de
-covariância entre parâmetros, que evidencia correlações como a entre os coeficientes de
-filtração e de dano. Parâmetros estritamente positivos serão testados quanto à aderência a
-distribuições normal e log-normal (Shapiro-Wilk e Anderson-Darling), e a formulação
-bayesiana da PINN \cite{yang2021bpinn} será usada como verificação independente da
-distribuição \textit{a posteriori}. A identificabilidade é verificada por perfis de
+linear, o resultado será confrontado com a propagação por Monte Carlo do Suplemento 1,
+repetindo a identificação sobre o substituto para obter a distribuição de $\theta_j$, seu
+intervalo de 95\% e a covariância entre parâmetros; a formulação bayesiana da PINN
+\cite{yang2021bpinn} serve como verificação independente. A identificabilidade é verificada por perfis de
 verossimilhança \cite{raue2009}.
 
 \textbf{Demonstração estatística da Hipótese 1.} Três testes, em sequência:
@@ -1080,6 +1079,7 @@ Custo computacional do treinamento de RL & Modelo substituto; GPU dedicada & Mé
 Política de RL fora do domínio físico válido & RL com restrições e filtro de segurança; verificação no simulador completo & Médio \\
 Diferença entre o ambiente de simulação e o meio poroso real & Calibração na campanha 1, ajuste do agente ao ambiente em escala de laboratório e previsão registrada antes do ensaio da campanha 2 & Médio \\
 Acesso a testemunhos e águas reais & Plugs de afloramento análogos e salmouras sintéticas de composição controlada; caracterização no LRAP+ & Médio \\
+Efeito dos aditivos não ensaiado em coreflood & Efeito dos aditivos parametrizado a partir da literatura; validação em ensaios adicionais com o LRAP+, quando viabilizados & Médio \\
 Número reduzido de ensaios contratados & Ensaio em múltiplas etapas no mesmo plugue; desenho orientado pela análise de identificabilidade; ensaios adicionais em colaboração com o LRAP+, quando viabilizados & Médio \\\bottomrule
 \end{longtable}
 }
@@ -1098,7 +1098,6 @@ Número reduzido de ensaios contratados & Ensaio em múltiplas etapas no mesmo p
   \item Duas iniciações científicas (FAPERJ e PIBIC/UFRJ) e projetos de fim de curso em
         Engenharia Mecânica e de Petróleo: ensaios (etapa 3), desenvolvimento do software
         (etapa 7) e simulador de divulgação.
-  \item Minicurso de 8 h sobre IA aplicada à injeção de água, aberto a estudantes da UFRJ.
 \end{itemize}
 
 % ---------------------------------------------------------------------
@@ -1156,11 +1155,11 @@ Campos e de Santos financiados pela cláusula de P,D\&I da ANP (Seção~\ref{sec
         ajustada a cada poço em vez de limites genéricos, e manutenção da reposição de volume que sustenta
         a recuperação de óleo.
   \item \textbf{Ambiental:} maior reaproveitamento da água produzida por reinjeção, menor
-        descarte no mar e menor consumo de energia por metro cúbico injetado.
+        descarte no mar, dosagem de inibidores e biocidas ajustada à necessidade real e menor
+        consumo de energia por metro cúbico injetado.
   \item \textbf{Social:} formação de pessoas qualificadas no Estado do Rio de Janeiro na
         interface entre engenharia de petróleo, química de águas e inteligência artificial,
-        com um doutorado, iniciações científicas e projetos de fim de curso, e a oferta de
-        minicurso aberto a estudantes da UFRJ; essa qualificação amplia a
+        com um doutorado, iniciações científicas e projetos de fim de curso; essa qualificação amplia a
         empregabilidade dos egressos na cadeia de óleo e gás fluminense e em setores que
         demandam IA aplicada. Os materiais de divulgação (Seção~\ref{sec:divulgacao})
         aproximam o público geral da ciência e da engenharia ligadas à principal atividade
