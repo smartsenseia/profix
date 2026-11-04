@@ -1,8 +1,6 @@
-% =====================================================================
-% Referências - Proposta PROFIX-RJ (FAPERJ 34/2026)
+% ==============================================================% Referências - Proposta PROFIX-RJ (FAPERJ 34/2026)
 % Entradas com note = {PENDENTE...} precisam ser completadas.
-% =====================================================================
-
+% ==============================================================
 % --- Modelos de declínio de injetividade ------------------------------
 
 @inproceedings{paiva2007,
@@ -14,12 +12,11 @@
   doi       = {10.2118/107866-MS}
 }
 
-<<<<<<< HEAD
 @inproceedings{bulau1997,
   author    = {Bulau, James R. and Honarpour, M. Matt},
   title     = {A Quality Control Program in Core Analysis},
   booktitle = {International Symposium of the Society of Core Analysts},
-  number    = {SCA-9713},
+  note      = {SCA-9713},
   address   = {Calgary, Canada},
   year      = {1997},
   url       = {https://jgmaas.com/SCA/1997/SCA1997-13.pdf}
@@ -31,13 +28,11 @@
   title     = {Closed-Loop Reservoir Management},
   booktitle = {SPE Reservoir Simulation Symposium},
   address   = {The Woodlands, Texas, USA},
-  number    = {SPE-119098-MS},
+  note      = {SPE-119098-MS},
   year      = {2009},
   doi       = {10.2118/119098-MS}
 }
 
-=======
->>>>>>> 54786aa6054ec674d7d1b73768f58fa6b43cc661
 @inproceedings{yuan2012,
   author    = {Yuan, H. and Nielsen, S. and Shapiro, A. and Bedrikovetsky, P.},
   title     = {A New Comprehensive Approach for Predicting Injectivity Decline during Waterflooding},
@@ -360,7 +355,10 @@
   author  = {Abdalla, R. and Agban, N. and L{\"u}ddeke, C. and Sui, D. and Jaeger, P.},
   title   = {Multi agent physics informed reinforcement learning for waterflooding optimization},
   journal = {Franklin Open},
-  year    = {2025}
+  volume  = {10},
+  pages   = {100229},
+  year    = {2025},
+  doi     = {10.1016/j.fraope.2025.100229}
 }
 
 @mastersthesis{nascimento2022,
@@ -576,11 +574,9 @@
   note   = {International Organization for Standardization, Genebra}
 }
 
-% =====================================================================
-% Aplicações de RL por família (lista do proponente)
+% ==============================================================% Aplicações de RL por família (lista do proponente)
 % Entradas com {PENDENTE} não puderam ser verificadas online.
-% =====================================================================
-
+% ==============================================================
 % --- Tabulares --------------------------------------------------------
 @inproceedings{lutter2021rvi,
   author    = {Lutter, M. and Mannor, S. and Peters, J. and Fox, D. and Garg, A.},
@@ -884,6 +880,28 @@
   year    = {2025},
   doi     = {10.1080/00207721.2024.2447359}
 }
+
+@article{wilcoxon1945,
+  author  = {Wilcoxon, Frank},
+  title   = {Individual Comparisons by Ranking Methods},
+  journal = {Biometrics Bulletin},
+  volume  = {1},
+  number  = {6},
+  pages   = {80--83},
+  year    = {1945},
+  doi     = {10.2307/3001968}
+}
+
+@article{holm1979,
+  author  = {Holm, Sture},
+  title   = {A Simple Sequentially Rejective Multiple Test Procedure},
+  journal = {Scandinavian Journal of Statistics},
+  volume  = {6},
+  number  = {2},
+  pages   = {65--70},
+  year    = {1979}
+}
+
 @inproceedings{nachum2018hiro,
   author    = {Nachum, O. and Gu, S. and Lee, H. and Levine, S.},
   title     = {Data-Efficient Hierarchical Reinforcement Learning},
@@ -920,17 +938,22 @@
  year={2020},
  note={SPE 198995; ver tambem resumo no Journal of Petroleum Technology, doi:10.2118/0920-0065-JPT}
 }
-@misc{lowpolymer2024,
- title={A new insight into pilot-scale development of low-salinity polymer flood using an intelligent-based proxy model coupled with particle swarm optimization},
- year={2024},
- howpublished={Scientific Reports},
- doi={10.1038/s41598-024-78210-y}
+@article{lowpolymer2024,
+  author  = {Khosravi, Razieh and Simjoo, Mohammad and Chahardowli, Mohammad},
+  title   = {A new insight into pilot-scale development of low-salinity polymer flood using an intelligent-based proxy model coupled with particle swarm optimization},
+  journal = {Scientific Reports},
+  volume  = {14},
+  year    = {2024},
+  doi     = {10.1038/s41598-024-78210-y}
 }
-@misc{sac2025,
- title={Research on intelligent regulation of layered water injection based on reinforcement learning SAC algorithm},
- year={2025},
- howpublished={Scientific Reports},
- doi={10.1038/s41598-025-11521-w}
+@article{sac2025,
+  author  = {Hu, Jinzhao and Jia, Deli and Liu, Shichu and Wang, Wenchang and Ren, Fushen},
+  title   = {Research on intelligent regulation of layered water injection based on reinforcement learning {SAC} algorithm},
+  journal = {Scientific Reports},
+  volume  = {15},
+  pages   = {33044},
+  year    = {2025},
+  doi     = {10.1038/s41598-025-11521-w}
 }
 @misc{multiagent2025,
  title={Scalable and adaptive injection-production control in reservoirs via a multi-agent reinforcement learning approach},
@@ -988,4 +1011,292 @@
   volume = {197},
   pages = {107833},
   year = {2021}
+}
+
+% =====================================================================
+% Novas referências (novembro de 2026): RL aplicado a composição/dosagem
+% de fluidos e artigos originais dos métodos; migração de finos
+% =====================================================================
+% ---------------------------------------------------------------------
+% Aplicacoes de RL em que a acao inclui a composicao/concentracao do
+% fluido injetado ou a dosagem de quimicos em agua
+% ---------------------------------------------------------------------
+@article{tan2023pcod,
+  author  = {Tan, Chaodong and Wang, Chunqiu and Tian, Jinjie and Niu, Huizhao and Wei, Qi and Zhang, Xiongying},
+  title   = {Optimization of Profile Control and Oil Displacement Scheme Parameters Based on Deep Deterministic Policy Gradient},
+  journal = {ACS Omega},
+  volume  = {8},
+  pages   = {23739--23753},
+  year    = {2023},
+  doi     = {10.1021/acsomega.3c02003}
+}
+
+@article{jin2026wag,
+  author  = {Jin, Li and Bai, Jingpan and Liu, Botao},
+  title   = {Reinforcement Learning-Based Dynamic Optimization Strategy of {WAG} Flooding with Inter-Well Connectivity for High Water-Cut Reservoirs},
+  journal = {Processes},
+  volume  = {14},
+  number  = {19},
+  pages   = {3089},
+  year    = {2026},
+  doi     = {10.3390/pr14193089}
+}
+
+@article{alvarez2024dss,
+  author  = {{\'A}lvarez D{\'i}ez, A{\'i}da and Pena Rois, Roc{\'i}o and Mocanu, Iulian and Orzan, Claudia and Brebenel, Cristian and Stere, J. and Mu{\'i}{\~n}os Land{\'i}n, S. and Fern{\'a}ndez Montenegro, J. M.},
+  title   = {Reinforcement learning-based {DSS} for coagulant and disinfectant dosage selection on drinking water treatment plants},
+  journal = {Water Supply},
+  volume  = {24},
+  number  = {1},
+  pages   = {86--102},
+  year    = {2024},
+  doi     = {10.2166/ws.2023.328}
+}
+
+@article{zhang2026dosing,
+  author  = {Zhang, Y. and Meng, D. and Ma, W.},
+  title   = {Model-Based Reinforcement Learning for Chemical Dosing Optimization in a Municipal Wastewater Treatment Plant: A Comparative Study of Three Actor--Critic Algorithms},
+  journal = {Processes},
+  volume  = {14},
+  pages   = {1800},
+  year    = {2026},
+  doi     = {10.3390/pr14111800}
+}
+
+% ---------------------------------------------------------------------
+% Artigos originais dos metodos (para as familias sem aplicacao no dominio)
+% ---------------------------------------------------------------------
+@book{sutton2018rl,
+  author    = {Sutton, Richard S. and Barto, Andrew G.},
+  title     = {Reinforcement Learning: An Introduction},
+  edition   = {2},
+  publisher = {MIT Press},
+  address   = {Cambridge, MA},
+  year      = {2018}
+}
+
+@article{mnih2015dqn,
+  author  = {Mnih, Volodymyr and Kavukcuoglu, Koray and Silver, David and others},
+  title   = {Human-level control through deep reinforcement learning},
+  journal = {Nature},
+  volume  = {518},
+  pages   = {529--533},
+  year    = {2015},
+  doi     = {10.1038/nature14236}
+}
+
+@inproceedings{dabney2018qrdqn,
+  author    = {Dabney, Will and Rowland, Mark and Bellemare, Marc G. and Munos, R{\'e}mi},
+  title     = {Distributional Reinforcement Learning With Quantile Regression},
+  booktitle = {AAAI Conference on Artificial Intelligence},
+  year      = {2018}
+}
+
+@inproceedings{schulman2015trpo,
+  author    = {Schulman, John and Levine, Sergey and Abbeel, Pieter and Jordan, Michael and Moritz, Philipp},
+  title     = {Trust Region Policy Optimization},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year      = {2015}
+}
+
+@inproceedings{hafner2020dreamer,
+  author    = {Hafner, Danijar and Lillicrap, Timothy and Ba, Jimmy and Norouzi, Mohammad},
+  title     = {Dream to Control: Learning Behaviors by Latent Imagination},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2020}
+}
+
+@inproceedings{rashid2018qmix,
+  author    = {Rashid, Tabish and Samvelyan, Mikayel and de Witt, Christian Schroeder and Farquhar, Gregory and Foerster, Jakob and Whiteson, Shimon},
+  title     = {{QMIX}: Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year      = {2018}
+}
+
+@inproceedings{kumar2020cql,
+  author    = {Kumar, Aviral and Zhou, Aurick and Tucker, George and Levine, Sergey},
+  title     = {Conservative Q-Learning for Offline Reinforcement Learning},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2020}
+}
+
+@inproceedings{kostrikov2022iql,
+  author    = {Kostrikov, Ilya and Nair, Ashvin and Levine, Sergey},
+  title     = {Offline Reinforcement Learning with Implicit Q-Learning},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2022}
+}
+
+% Referências novas ou completadas nesta revisão (já incluídas em bib.bib)
+
+@article{tan2023pcod,
+  author  = {Tan, Chaodong and Wang, Chunqiu and Tian, Jinjie and Niu, Huizhao and Wei, Qi and Zhang, Xiongying},
+  title   = {Optimization of Profile Control and Oil Displacement Scheme Parameters Based on Deep Deterministic Policy Gradient},
+  journal = {ACS Omega},
+  volume  = {8},
+  pages   = {23739--23753},
+  year    = {2023},
+  doi     = {10.1021/acsomega.3c02003}
+}
+
+@article{jin2026wag,
+  author  = {Jin, Li and Bai, Jingpan and Liu, Botao},
+  title   = {Reinforcement Learning-Based Dynamic Optimization Strategy of {WAG} Flooding with Inter-Well Connectivity for High Water-Cut Reservoirs},
+  journal = {Processes},
+  volume  = {14},
+  number  = {19},
+  pages   = {3089},
+  year    = {2026},
+  doi     = {10.3390/pr14193089}
+}
+
+@article{alvarez2024dss,
+  author  = {{\'A}lvarez D{\'i}ez, A{\'i}da and Pena Rois, Roc{\'i}o and Mocanu, Iulian and Orzan, Claudia and Brebenel, Cristian and Stere, J. and Mu{\'i}{\~n}os Land{\'i}n, S. and Fern{\'a}ndez Montenegro, J. M.},
+  title   = {Reinforcement learning-based {DSS} for coagulant and disinfectant dosage selection on drinking water treatment plants},
+  journal = {Water Supply},
+  volume  = {24},
+  number  = {1},
+  pages   = {86--102},
+  year    = {2024},
+  doi     = {10.2166/ws.2023.328}
+}
+
+@article{zhang2026dosing,
+  author  = {Zhang, Y. and Meng, D. and Ma, W.},
+  title   = {Model-Based Reinforcement Learning for Chemical Dosing Optimization in a Municipal Wastewater Treatment Plant: A Comparative Study of Three Actor--Critic Algorithms},
+  journal = {Processes},
+  volume  = {14},
+  pages   = {1800},
+  year    = {2026},
+  doi     = {10.3390/pr14111800}
+}
+
+@book{sutton2018rl,
+  author    = {Sutton, Richard S. and Barto, Andrew G.},
+  title     = {Reinforcement Learning: An Introduction},
+  edition   = {2},
+  publisher = {MIT Press},
+  address   = {Cambridge, MA},
+  year      = {2018}
+}
+
+@article{mnih2015dqn,
+  author  = {Mnih, Volodymyr and Kavukcuoglu, Koray and Silver, David and others},
+  title   = {Human-level control through deep reinforcement learning},
+  journal = {Nature},
+  volume  = {518},
+  pages   = {529--533},
+  year    = {2015},
+  doi     = {10.1038/nature14236}
+}
+
+@inproceedings{dabney2018qrdqn,
+  author    = {Dabney, Will and Rowland, Mark and Bellemare, Marc G. and Munos, R{\'e}mi},
+  title     = {Distributional Reinforcement Learning With Quantile Regression},
+  booktitle = {AAAI Conference on Artificial Intelligence},
+  year      = {2018}
+}
+
+@inproceedings{schulman2015trpo,
+  author    = {Schulman, John and Levine, Sergey and Abbeel, Pieter and Jordan, Michael and Moritz, Philipp},
+  title     = {Trust Region Policy Optimization},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year      = {2015}
+}
+
+@inproceedings{hafner2020dreamer,
+  author    = {Hafner, Danijar and Lillicrap, Timothy and Ba, Jimmy and Norouzi, Mohammad},
+  title     = {Dream to Control: Learning Behaviors by Latent Imagination},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2020}
+}
+
+@inproceedings{rashid2018qmix,
+  author    = {Rashid, Tabish and Samvelyan, Mikayel and de Witt, Christian Schroeder and Farquhar, Gregory and Foerster, Jakob and Whiteson, Shimon},
+  title     = {{QMIX}: Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year      = {2018}
+}
+
+@inproceedings{kumar2020cql,
+  author    = {Kumar, Aviral and Zhou, Aurick and Tucker, George and Levine, Sergey},
+  title     = {Conservative Q-Learning for Offline Reinforcement Learning},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2020}
+}
+
+@inproceedings{kostrikov2022iql,
+  author    = {Kostrikov, Ilya and Nair, Ashvin and Levine, Sergey},
+  title     = {Offline Reinforcement Learning with Implicit Q-Learning},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2022}
+}
+
+@article{sutton1999options,
+  author  = {Sutton, Richard S. and Precup, Doina and Singh, Satinder},
+  title   = {Between {MDPs} and semi-{MDPs}: A framework for temporal abstraction in reinforcement learning},
+  journal = {Artificial Intelligence},
+  volume  = {112},
+  number  = {1--2},
+  pages   = {181--211},
+  year    = {1999}
+}
+
+@article{khilar1984,
+  author  = {Khilar, K. C. and Fogler, H. S.},
+  title   = {The existence of a critical salt concentration for particle release},
+  journal = {Journal of Colloid and Interface Science},
+  volume  = {101},
+  number  = {1},
+  pages   = {214--224},
+  year    = {1984}
+}
+
+@article{abdalla2025,
+  author  = {Abdalla, R. and Agban, N. and L{\"u}ddeke, C. and Sui, D. and Jaeger, P.},
+  title   = {Multi agent physics informed reinforcement learning for waterflooding optimization},
+  journal = {Franklin Open},
+  volume  = {10},
+  pages   = {100229},
+  year    = {2025},
+  doi     = {10.1016/j.fraope.2025.100229}
+}
+
+@article{sac2025,
+  author  = {Hu, Jinzhao and Jia, Deli and Liu, Shichu and Wang, Wenchang and Ren, Fushen},
+  title   = {Research on intelligent regulation of layered water injection based on reinforcement learning {SAC} algorithm},
+  journal = {Scientific Reports},
+  volume  = {15},
+  pages   = {33044},
+  year    = {2025},
+  doi     = {10.1038/s41598-025-11521-w}
+}
+
+@article{lowpolymer2024,
+  author  = {Khosravi, Razieh and Simjoo, Mohammad and Chahardowli, Mohammad},
+  title   = {A new insight into pilot-scale development of low-salinity polymer flood using an intelligent-based proxy model coupled with particle swarm optimization},
+  journal = {Scientific Reports},
+  volume  = {14},
+  year    = {2024},
+  doi     = {10.1038/s41598-024-78210-y}
+}
+
+@article{sutton1999options,
+  author  = {Sutton, Richard S. and Precup, Doina and Singh, Satinder},
+  title   = {Between {MDPs} and semi-{MDPs}: A framework for temporal abstraction in reinforcement learning},
+  journal = {Artificial Intelligence},
+  volume  = {112},
+  number  = {1--2},
+  pages   = {181--211},
+  year    = {1999}
+}
+
+@article{khilar1984,
+  author  = {Khilar, K. C. and Fogler, H. S.},
+  title   = {The existence of a critical salt concentration for particle release},
+  journal = {Journal of Colloid and Interface Science},
+  volume  = {101},
+  number  = {1},
+  pages   = {214--224},
+  year    = {1984}
 }
