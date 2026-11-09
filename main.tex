@@ -30,7 +30,7 @@
 \usepackage{multicol}
 \usepackage[hidelinks]{hyperref}
 \usepackage{titlesec}
-\titlespacing*{\section}{0pt}{7pt plus 1pt minus 1pt}{3pt}
+\titlespacing*{\section}{0pt}{19pt plus 2pt minus 1pt}{3pt}
 \titlespacing*{\subsection}{0pt}{5pt plus 1pt minus 1pt}{2pt}
 \usepackage{fancyhdr}
 \usepackage{tikz}
@@ -65,7 +65,7 @@
 \rhead{\footnotesize Página \thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 
-\titleformat{\section}{\normalsize\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\section}{\normalsize\bfseries\raggedright}{\thesection.}{0.5em}{\MakeUppercase}
 \titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
 
 % =====================================================================
@@ -105,7 +105,7 @@ neurais informadas pela física (PINNs) para preservação da injetividade\par}
 \toprule
 Instituição executora       & Universidade Federal do Rio de Janeiro (UFRJ) \\
 Programa de Pós-Graduação   & Programa de Engenharia Mecânica (PEM) -- COPPE/UFRJ \\
-Grande área / área / subárea & Engenharias / Engenharia de Petróleo \\
+Grande área / área / subárea & Engenharias / Engenharia Mecânica / Princípios Variacionais e Métodos Numéricos \\
 Eixo estratégico            & Óleo e gás \\
 Bolsa CAPES pleiteada       & Doutorado (48 meses) \\
 Duração                     & 48 meses (+3 meses para indicação dos bolsistas CAPES) \\
@@ -225,7 +225,7 @@ $\phi_{\mathrm{NN}}$ & Pesos da rede neural \\
 
 A reinjeção de água produzida, isoladamente ou misturada à água do mar tratada, é uma estratégia para a gestão da água e a manutenção da pressão em reservatórios de petróleo. Entretanto, a composição físico-química da água injetada pode comprometer a injetividade por mecanismos de dano à formação que interagem e evoluem ao longo do tempo, incluindo precipitação de incrustações minerais (\ce{BaSO4}, \ce{CaCO3} e \ce{SrSO4}), migração e inchamento de argilas, retenção de partículas e gotículas de óleo, formação de reboco e atividade microbiológica. A intensidade desses fenômenos depende da mineralogia, das propriedades petrofísicas e da estrutura porosa da rocha, da composição das águas de formação, produzida e do mar, bem como das condições operacionais do poço. Apesar dessas interdependências, a especificação da água de injeção frequentemente se apoia em análises de compatibilidade e critérios de tratamento avaliados separadamente, sem incorporar plenamente o caráter cumulativo do dano.
 
-Este projeto tem como objetivo desenvolver e validar uma metodologia computacional híbrida capaz de determinar e atualizar, ao longo da operação, a composição físico-química da água de injeção que melhor preserva a injetividade, respeitando restrições técnicas, econômicas e de segurança. A metodologia será organizada em sete etapas interdependentes: (i) desenvolvimento de um simulador físico de transporte reativo e evolução do dano à formação, com representação dos mecanismos geoquímicos, de retenção e de alteração da permeabilidade; (ii) análise de sensibilidade global e de identificabilidade para selecionar parâmetros dominantes e orientar os ensaios; (iii) realização de ensaios de \textit{coreflooding} para identificação inversa, por PINNs, dos parâmetros físico-químicos e constitutivos que governam o dano à formação, com calibração do simulador e quantificação das incertezas; (iv) treinamento e validação de modelos substitutos (surrogate model) que reproduzam a resposta dinâmica do simulador com menor custo computacional; (v) treinamento e comparação de algoritmos de aprendizado por reforço (RL) para definir sequencialmente as proporções de mistura entre fontes de água, a composição iônica, a salinidade e as concentrações de aditivos, considerando os efeitos futuros das decisões; (vi) desenvolvimento e avaliação de um estimador de estados baseado em redes neurais informadas pela física (PINNs), com assimilação de dados operacionais de pressão, vazão e temperatura, para inferir a evolução dos mecanismos de dano à formação e quantificar as incertezas das estimativas; acoplamento desse estimador ao agente de aprendizado por reforço (RL), de modo que as decisões sobre a composição da água sejam atualizadas dinamicamente conforme o estado estimado do poço; e (vii) validação experimental da política desenvolvida por RL, mediante aplicação da sequência de composições recomendada em ensaio de \textit{coreflooding} e comparação entre a injetividade medida e a prevista pelo ambiente de simulação.
+Este projeto tem como objetivo desenvolver e validar uma metodologia computacional híbrida capaz de determinar e atualizar, ao longo da operação, a composição físico-química da água de injeção que melhor preserva a injetividade, respeitando restrições técnicas, econômicas e de segurança. A metodologia será organizada em sete etapas interdependentes: (i) desenvolvimento de um simulador físico de transporte reativo e evolução do dano à formação, com representação dos mecanismos geoquímicos, de retenção e de alteração da permeabilidade; (ii) análise de sensibilidade global e de identificabilidade para selecionar parâmetros dominantes e orientar os ensaios; (iii) realização de ensaios de \textit{coreflooding} para identificação inversa, por PINNs, dos parâmetros físico-químicos e constitutivos que governam o dano à formação, com calibração do simulador e quantificação das incertezas; (iv) treinamento e validação de modelos substitutos (surrogate model) que reproduzam a resposta dinâmica do simulador com menor custo computacional; (v) treinamento e comparação de algoritmos de aprendizado por reforço (RL) para definir sequencialmente as proporções de mistura entre fontes de água, a composição iônica, a salinidade e as concentrações de aditivos, considerando os efeitos futuros das decisões; (vi) desenvolvimento e avaliação de um estimador de estados baseado em redes neurais informadas pela física (PINNs), com assimilação de dados operacionais de pressão e vazão, para inferir a evolução dos mecanismos de dano à formação e quantificar as incertezas das estimativas, testado com dados públicos de campo; acoplamento desse estimador ao agente de aprendizado por reforço (RL), de modo que as decisões sobre a composição da água sejam atualizadas dinamicamente conforme o estado estimado do poço; e (vii) validação experimental da política desenvolvida por RL, mediante aplicação da sequência de composições recomendada em ensaio de \textit{coreflooding} e comparação entre a injetividade medida e a prevista pelo ambiente de simulação.
 
 A avaliação incluirá a propagação das incertezas dos parâmetros, testes em cenários geológicos e geoquímicos não utilizados no treinamento e análise estatística do desempenho das políticas. Esperam-se como resultados modelos físicos calibrados, parâmetros de dano com incertezas quantificadas, evidências sobre as vantagens e limitações da otimização adaptativa e uma ferramenta computacional de apoio à decisão para recomendar composições de água específicas a diferentes cenários de reservatório. Como impactos potenciais, destacam-se a redução da perda de injetividade, da demanda energética de bombeamento e da necessidade de intervenções corretivas, favorecendo o reaproveitamento da água produzida e a eficiência operacional de campos petrolíferos.
 
@@ -294,7 +294,7 @@ Uma vez caracterizadas as condições físico-químicas e operacionais, a seleç
 
 A combinação de simuladores de transporte reativo com modelos substitutos de aprendizado profundo é promissora nesse cenário. Um simulador físico pode representar transporte de espécies, precipitação, retenção de partículas e evolução da permeabilidade, enquanto um substituto treinado em simulações calibradas aproxima as transições de estado necessárias a numerosos episódios de RL. Sua utilização exige validação em cenários não vistos e verificações periódicas no simulador original, pois o agente pode explorar imprecisões do modelo substituto. A incerteza das previsões também precisa informar as restrições e a avaliação de segurança das ações recomendadas.
 
-A eficácia da otimização sequencial depende ainda de identificar parâmetros de dano e inferir estados internos que não são medidos diretamente. Para esses problemas inversos, as redes neurais informadas pela física (PINNs) constituem uma alternativa em que dados experimentais ou operacionais são combinados a equações de conservação e transporte \cite{raissi2019}. No projeto proposto, sua utilização será investigada em duas funções distintas: identificar parâmetros físico-químicos e constitutivos do dano a partir de ensaios de \textit{coreflooding}; e investigar a estimação de estados não diretamente observáveis a partir de históricos de pressão, vazão e temperatura, com assimilação de dados. As estimativas e suas incertezas serão fornecidas ao agente de RL para condicionar a atualização das decisões ao estado provável do poço. A viabilidade dessa etapa depende da identificabilidade dos mecanismos e será comparada a métodos convencionais de calibração e assimilação, especialmente em regimes com frentes abruptas ou dados escassos.
+A eficácia da otimização sequencial depende ainda de identificar parâmetros de dano e inferir estados internos que não são medidos diretamente. Para esses problemas inversos, as redes neurais informadas pela física (PINNs) constituem uma alternativa em que dados experimentais ou operacionais são combinados a equações de conservação e transporte \cite{raissi2019}. No projeto proposto, sua utilização será investigada em duas funções distintas: identificar parâmetros físico-químicos e constitutivos do dano a partir de ensaios de \textit{coreflooding}; e investigar a estimação de estados não diretamente observáveis a partir de históricos de pressão e vazão, com assimilação de dados. As estimativas e suas incertezas serão fornecidas ao agente de RL para condicionar a atualização das decisões ao estado provável do poço. A viabilidade dessa etapa depende da identificabilidade dos mecanismos e será comparada a métodos convencionais de calibração e assimilação, especialmente em regimes com frentes abruptas ou dados escassos.
 
 Em conjunto, os trabalhos examinados demonstram avanços em três direções complementares: (i) previsão por IA dos efeitos da salinidade e da composição iônica sobre propriedades de fluxo e recuperação de petróleo; (ii) otimização computacional de variáveis químicas e operacionais com foco sobretudo em recuperação ou retorno econômico; e (iii) integração de dados geológicos e operacionais e aplicação de RL a decisões sucessivas de injeção e produção. Entretanto, os estudos aqui analisados não estabelecem uma metodologia experimentalmente validada que selecione \emph{ao longo do tempo a composição físico-química e as proporções de mistura da água}, tendo como objetivo explícito a \emph{preservação da injetividade} e considerando conjuntamente os mecanismos acumulativos de dano e a incerteza sobre o estado do poço.
 
@@ -326,7 +326,8 @@ natural dessa linha, pois, em vez de ajustar os ganhos de um controlador, o agen
 diretamente a política de decisão sobre a composição da água de injeção, considerando os efeitos futuros de cada ação.
 
 O contato com o problema da injetividade veio com o pós-doutorado no Programa de Engenharia
-Mecânica da COPPE/UFRJ, iniciado em 2024 e voltado ao tratamento de água de produção por
+Mecânica da COPPE/UFRJ, iniciado em 2024 no LabMEMS, no âmbito de projeto de P\&D financiado
+pela ANP, e voltado ao tratamento de água de produção por
 membranas e ao desenvolvimento dos sistemas de controle desses processos, com um artigo sobre
 um \textit{framework} de seleção de membranas atualmente em revisão. Essa atuação levou a
 pesquisa para a área de óleo e gás e evidenciou uma questão que o tratamento, isoladamente,
@@ -337,7 +338,11 @@ A proposta resulta, portanto, da convergência dessas três frentes e inaugura u
 pesquisa própria, na qual a experiência em medição e incerteza orienta os ensaios, a
 experiência em controle baseado em inteligência artificial fundamenta o agente de decisão e a
 atuação com água de produção define o problema de aplicação.
-A produção científica completa consta do Currículo Lattes anexado.
+A produção do proponente inclui 11 artigos em periódicos e um artigo, como autor
+correspondente, em revisão sobre segmentação de rochas carbonáticas por aprendizado profundo
+(DCA-UNet), primeiro trabalho do proponente com rochas de reservatório; o proponente atua
+ainda como revisor de três periódicos internacionais. A produção completa consta do
+Currículo Lattes anexado.
 
 % ---------------------------------------------------------------------
 \section{Questão científica, tecnológica ou de inovação e hipóteses}\itemedital{2.16 X}
@@ -383,7 +388,11 @@ a Hipótese 2 usa esses parâmetros para testar, no ambiente calibrado, o valor 
 sequencial; a Hipótese 3 verifica experimentalmente a confiabilidade desse ambiente, isto é,
 se as decisões tomadas em simulação se sustentam no meio poroso real. Se a
 Hipótese 1 for apenas parcialmente confirmada, a Hipótese 2 continua testável, com incerteza
-paramétrica maior incorporada ao treinamento do agente.
+paramétrica maior incorporada ao treinamento do agente. A Hipótese 2 é testada no ambiente de
+simulação porque comparar políticas ao longo da vida do poço exige horizontes de anos e centenas
+de cenários, inviáveis experimentalmente; a validade desse teste é sustentada pela calibração
+experimental do ambiente (Hipótese 1), pela verificação das políticas no simulador completo e pela
+Hipótese 3, que confronta em \textit{coreflood} a previsão do ambiente com a injetividade medida.
 
 % ---------------------------------------------------------------------
 \section{Objetivos}\itemedital{2.16 XI}
@@ -416,7 +425,7 @@ experimentalmente essas decisões em ensaios de coreflood.
         determine ao longo da vida do poço a composição da água de injeção, incluindo as concentrações de aditivos, e compará-lo com as referências
         definidas (teste da Hipótese 2).
   \item Desenvolver um estimador do dano em operação, alimentado por dados de pressão e
-        vazão de poços, e testá-lo com dados públicos de campo.
+        vazão de poços, testá-lo com dados públicos de campo e fornecer sua estimativa do estado do poço ao agente de RL.
   \item Validar a política em ensaios de coreflood no LRAP+, publicar a metodologia em artigos
         científicos e na tese de doutorado e integrar simulador, modelos e agentes em uma
         ferramenta de apoio à decisão (teste da Hipótese 3).
@@ -535,16 +544,20 @@ tomadas intermediárias por capilares ao longo do plugue, o que permite medir o 
 pressão e localizar o dano. Os ensaios serão realizados em plugs de arenito de afloramento,
 caracterizados por porosidade e permeabilidade (DV-4000), com mineralogia obtida da
 caracterização disponível na literatura para a rocha selecionada, e com salmouras sintéticas
-de composição controlada. O programa experimental contratado compreende dois ensaios, um
+de composição controlada. O arenito é adotado como análogo dos reservatórios turbidíticos da Bacia
+de Campos, nos quais a reinjeção de água produzida e a injeção de água do mar são práticas
+consolidadas e a incrustação por \ce{BaSO4} é recorrente \cite{rocha2001,bezerra2004}; a extensão
+para os carbonatos do pré-sal, que exige caracterização própria da reatividade da rocha, é
+perspectiva de continuidade do projeto. O programa experimental contratado compreende dois ensaios, um
 em cada campanha. O ensaio da primeira campanha é conduzido em múltiplas etapas no mesmo
 plugue, cada uma com uma salmoura de composição diferente, definidas pela análise de
 identificabilidade para ativar sucessivamente os mecanismos de interesse (compatibilidade e
-incrustação, redução escalonada de salinidade para finos). As etapas de incrustação usam salmouras isentas de partículas, de modo que o dano medido seja atribuído à precipitação, localizada pelas tomadas intermediárias. Ao longo de todo o ensaio são
+incrustação, redução escalonada de salinidade para finos). Cada etapa constitui uma condição experimental distinta, com sua própria série de vazão e de perfil de pressão, de modo que um único ensaio fornece várias condições para calibração e para teste cego. As etapas de incrustação usam salmouras isentas de partículas, de modo que o dano medido seja atribuído à precipitação, localizada pelas tomadas intermediárias. Ao longo de todo o ensaio são
 registradas a vazão e as pressões absolutas e diferenciais na entrada, na saída e nas
 tomadas intermediárias. As etapas iniciais são usadas na calibração e as finais, no teste
 cego da Hipótese 1; o segundo ensaio é dedicado à validação da política (etapa 7). Ensaios
 adicionais realizados em colaboração com o LRAP+, quando viabilizados, serão incorporados
-aos conjuntos de calibração e de teste.
+aos conjuntos de calibração e de teste. Além dos ensaios próprios, o simulador e a PINN inversa serão testados com dados de ensaios publicados, reunidos na base de dados do projeto (OE1), como os de filtração profunda com tomadas intermediárias de pressão \cite{bedrikovetsky2001} e os de liberação de finos por redução de salinidade \cite{khilar1984}.
 
 \textbf{PINN inversa.} Uma rede neural representa os campos de concentração, de depósito e
 de pressão $\hat{u}(x,t)$ e é treinada para satisfazer simultaneamente os dados e as
@@ -579,9 +592,10 @@ conjunto de redes, para que o agente evite regiões em que o substituto não é 
 
 \subsection{Etapa 5 -- Agente de aprendizado por reforço}
 O agente é treinado sobre o substituto, com verificação periódica no simulador completo.
-Como nenhum algoritmo é superior em todos os problemas, serão avaliadas as oito famílias de
+Como nenhum algoritmo é superior em todos os problemas, serão avaliadas cinco famílias de
 aprendizado por reforço, cada uma com um papel definido no projeto
-(Tabela~\ref{tab:rl}).
+(Tabela~\ref{tab:rl}). As extensões multiagente, para vários poços que compartilham as mesmas
+fontes de água, e hierárquica são perspectivas para projetos futuros.
 
 \begin{table}[!htbp]
 \centering
@@ -601,36 +615,24 @@ aprendizado por reforço, cada uma com um papel definido no projeto
  & Ações discretas (catálogo de composições candidatas). As versões distribucionais (C51, QR-DQN) estimam a distribuição do retorno e permitem políticas sensíveis a risco, avaliadas pelo CVaR.
  & \cite{mnih2015dqn,dabney2018qrdqn,fang2022hvac} \\
 \addlinespace
-\textbf{Gradiente de política:} REINFORCE, gradiente natural, TRPO
- & Referências de base para ações contínuas; o TRPO fundamenta a otimização com restrições por região de confiança (CPO) \cite{achiam2017}.
- & \cite{schulman2015trpo,centurelli2022} \\
-\addlinespace
-\textbf{Ator-crítico:} A2C, A3C, DDPG, TD3, SAC, PPO
- & Candidatos principais para ações contínuas (proporções de mistura, teores iônicos e concentrações de aditivos), em versões com restrições por multiplicadores de Lagrange \cite{ray2019}.
- & \cite{tan2023pcod,haarnoja2018,schulman2017,sac2025,silvestri2024} \\
+\textbf{Ator-crítico com restrições:} PPO, SAC, TD3, PPO-Lagrangiano, CPO
+ & Candidatos principais para ações contínuas (proporções de mistura, teores iônicos e concentrações de aditivos), com restrições por multiplicadores de Lagrange \cite{ray2019} ou por região de confiança (CPO, derivado do TRPO) \cite{achiam2017}.
+ & \cite{tan2023pcod,haarnoja2018,schulman2017,schulman2015trpo,sac2025,silvestri2024} \\
 \addlinespace
 \textbf{Baseados em modelo:} Dyna-Q, PILCO, PETS, MBPO, Dreamer, MuZero
  & Usam o substituto para gerar transições e reduzir chamadas ao simulador. PILCO e PETS são eficientes quando cada amostra é cara, como no ajuste ao ambiente em escala de laboratório (etapa 7); o Dreamer, com modelo latente, trata a observação parcial.
  & \cite{janner2019,hafner2020dreamer,zhang2026dosing,ye2025mbrl} \\
 \addlinespace
-\textbf{Multiagente:} Q-learning independente, MADDPG, VDN, QMIX, MAPPO
- & Dois usos: vários poços injetores que compartilham as mesmas fontes de água; e um agente por grupo de variáveis de composição (mistura, salinidade, teores iônicos, aditivos), coordenados.
- & \cite{abdalla2025,rashid2018qmix,yun2025ro} \\
-\addlinespace
 \textbf{Offline:} BCQ, CQL, IQL, AWAC, TD3+BC
- & Aprendizado a partir de históricos de operação já registrados, sem experimentação no poço; política inicial conservadora.
+ & Aprendizado a partir de históricos de operação já registrados, sem experimentação no poço; política inicial conservadora e caminho para a aplicação em campo.
  & \cite{kumar2020cql,kostrikov2022iql,nair2020awac} \\
-\addlinespace
-\textbf{Hierárquicos:} opções, MAXQ, HIRO
- & Correspondem à hierarquia do problema: o nível alto escolhe a composição-alvo (semanas a meses) e o nível baixo ajusta as proporções de mistura dentro de cada período.
- & \cite{sutton1999options,nachum2018hiro,yang2022hrl} \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 O núcleo do estudo é formado pela iteração de valor (gabarito), pelo PPO com restrições, pelo
-SAC e por um método baseado em modelo; as demais famílias entram na triagem conforme o
-orçamento computacional permitir. A avaliação é feita em dois estágios:
+SAC e por um método baseado em modelo; as famílias de valor com redes neurais e \textit{offline}
+entram na triagem conforme o orçamento computacional permitir. A avaliação é feita em dois estágios:
 \begin{enumerate}[label=(\alph*)]
   \item \textit{Triagem:} um ou dois representantes de cada família são treinados em um
         ambiente reduzido (horizonte curto, menos cenários, três sementes). Na versão
@@ -642,8 +644,7 @@ orçamento computacional permitir. A avaliação é feita em dois estágios:
         restrições como referência fixa, seguem para o protocolo estatístico completo da
         Seção~\ref{sec:incerteza}.
 \end{enumerate}
-Os métodos multiagente e hierárquicos são avaliados nos cenários em que se aplicam (vários
-poços e vários grupos de variáveis de composição), e os métodos \textit{offline} são avaliados por avaliação
+Os métodos \textit{offline} são avaliados por avaliação
 fora da política sobre históricos simulados e públicos. Cada algoritmo é testado com
 observação completa e em versão recorrente (LSTM), e os hiperparâmetros são ajustados com o
 mesmo orçamento para todos, usando bibliotecas de referência (Stable-Baselines3, OmniSafe e
@@ -804,7 +805,7 @@ correspondente ser concluída.
 \textbf{Relatório} & \textbf{Metas a comprovar} & \textbf{Indicadores de processo} \\
 \midrule
 \endhead
-R1 (mês 12) & M1 & Revisão sistemática concluída; simulador radial com módulo de incrustação implementado e balanço de massa verificado; plano experimental da campanha 1 definido pela análise de identificabilidade e ensaios iniciados; doutorando matriculado e iniciação científica selecionada; credenciamento no PEM; primeiros materiais de divulgação publicados \\
+R1 (mês 12) & M1 & Revisão sistemática concluída; simulador radial com módulo de incrustação implementado e balanço de massa verificado; plano experimental da campanha 1 definido pela análise de identificabilidade e plugues preparados; doutorando matriculado e iniciação científica selecionada; credenciamento no PEM; primeiros materiais de divulgação publicados \\
 R2 (mês 24) & M2, M3, M4 & Ensaio da campanha 1 realizado e dados organizados; erro da previsão cega da Hipótese 1; primeira versão do modelo substituto; trabalho C1 apresentado; ações de divulgação acumuladas \\
 R3 (mês 36) & M5, M6 & Número de algoritmos triados e aprofundados; resultado estatístico da Hipótese 2 (IQM, probabilidade de melhoria); P1 e P2 submetidos; estimador aplicado aos dados de Volve; sequência e previsão da campanha 2 registradas antes do ensaio; exame de qualificação do doutorando; primeira proposta a edital externo submetida \\
 RF (mês 48) & M7, M8, M9, M10 & Resultado da campanha 2 (teste da Hipótese 3); C2 apresentado e P3 submetido; ferramenta de apoio à decisão integrada e documentada; tese em fase final; indicadores consolidados de divulgação (eventos, participantes, vídeos, acessos ao simulador) \\
@@ -1071,16 +1072,16 @@ conferida na avaliação Qualis vigente no momento da submissão.
 \textbf{Risco} & \textbf{Mitigação} & \textbf{Nível} \\
 \midrule
 \endhead
-Poucos dados de injetividade com composição medida & Dados sintéticos calibrados em ensaios próprios; Volve & Alto \\
+Poucos dados de injetividade com composição medida & Dados sintéticos calibrados em ensaios próprios; ensaios publicados na literatura; Volve & Alto \\
 Parâmetros do dano não identificáveis com os dados disponíveis & Análise de identificabilidade antes dos ensaios; tomadas de pressão intermediárias; ensaio em múltiplas etapas; incerteza propagada ao agente & Médio \\
 Dificuldade de treino da PINN em frentes abruptas & Ponderação adaptativa, treino progressivo no tempo; comparação com calibração clássica sobre o simulador & Médio \\
-Modelos biológicos pouco validados & Tratar como módulo opcional; ensaios dedicados & Médio \\
+Modelos biológicos pouco validados & Módulo incremental, fora do núcleo do simulador; parâmetros da literatura com incerteza ampliada & Médio \\
 Custo computacional do treinamento de RL & Modelo substituto; GPU dedicada & Médio \\
 Política de RL fora do domínio físico válido & RL com restrições e filtro de segurança; verificação no simulador completo & Médio \\
 Diferença entre o ambiente de simulação e o meio poroso real & Calibração na campanha 1, ajuste do agente ao ambiente em escala de laboratório e previsão registrada antes do ensaio da campanha 2 & Médio \\
 Acesso a testemunhos e águas reais & Plugs de afloramento análogos e salmouras sintéticas de composição controlada; caracterização no LRAP+ & Médio \\
 Efeito dos aditivos não ensaiado em coreflood & Efeito dos aditivos parametrizado a partir da literatura; validação em ensaios adicionais com o LRAP+, quando viabilizados & Médio \\
-Número reduzido de ensaios contratados & Ensaio em múltiplas etapas no mesmo plugue; desenho orientado pela análise de identificabilidade; ensaios adicionais em colaboração com o LRAP+, quando viabilizados & Médio \\\bottomrule
+Número reduzido de ensaios contratados & Ensaio em múltiplas etapas no mesmo plugue, cada etapa uma condição distinta; desenho orientado pela análise de identificabilidade; validação complementar com ensaios publicados; ensaios adicionais em colaboração com o LRAP+, quando viabilizados & Médio \\\bottomrule
 \end{longtable}
 }
 
@@ -1135,6 +1136,10 @@ de atuação na COPPE/UFRJ:
         do doutorando e dos alunos de iniciação científica ao programa.
   \item \textbf{Dados abertos de campo}: conjunto Volve, disponibilizado pela Equinor, e dados
         públicos da ANP, usados na etapa 6.
+  \item \textbf{Inserção internacional}: apresentação dos resultados em evento da SPE (C2) e
+        publicação em periódicos internacionais (Seção~\ref{sec:resultados}), com o objetivo de
+        estabelecer colaboração com grupos estrangeiros que atuam em dano à formação e em
+        aprendizado por reforço aplicado a reservatórios.
 \end{itemize}
 A partir dos resultados, essa rede permite propor projetos com operadoras das Bacias de
 Campos e de Santos financiados pela cláusula de P,D\&I da ANP (Seção~\ref{sec:sustentabilidade}).
@@ -1184,11 +1189,18 @@ do pré-sal em que a reinjeção de água produzida cresce com o corte de água.
 \ce{BaSO4} é o problema dominante nos históricos operacionais da Bacia de Campos
 \cite{rocha2001,bezerra2004}, e prolongar a vida útil desses campos tem efeito direto sobre
 os royalties e participações especiais que sustentam parte relevante das receitas do Estado e
-dos municípios produtores. O projeto contribui ao produzir conhecimento e ferramentas
+dos municípios produtores. Em 2025, o Estado produziu cerca de 1,2 bilhão de barris de petróleo,
+88\% da produção nacional, e o Estado e os municípios fluminenses receberam cerca de R\$~45 bilhões
+em participações governamentais \cite{firjan2026anuario}, dos quais R\$~26,1 bilhões destinados ao
+Tesouro estadual \cite{cbie2026royalties}. Nessa escala, cada 0,5\% de produção preservada pela
+manutenção da injetividade corresponde a cerca de R\$~130 milhões anuais em participações
+governamentais ao Estado. O projeto contribui ao produzir conhecimento e ferramentas
 aplicáveis a esses campos, ao formar no Estado pessoal qualificado na interface entre
 engenharia de petróleo e inteligência artificial, demandado pela cadeia de óleo e gás
-fluminense, e ao fortalecer a capacidade de pesquisa da COPPE/UFRJ em um tema com potencial
-de cooperação com as empresas sediadas no Rio de Janeiro. A reinjeção de água produzida
+fluminense, e ao fortalecer a capacidade de pesquisa da COPPE/UFRJ. Os usuários potenciais da ferramenta são as operadoras
+com poços injetores no Estado, como a Petrobras e operadoras independentes de campos maduros da
+Bacia de Campos, como a PRIO; a cláusula de P,D\&I dos contratos da ANP é o caminho previsto para
+cooperações com essas empresas a partir dos resultados do projeto. A reinjeção de água produzida
 também se alinha às metas de redução de descarte de efluentes no mar.
 
 % ---------------------------------------------------------------------
@@ -1243,16 +1255,17 @@ cronograma (atividade A10):
 \toprule
 \textbf{Ação (item 2.20)} & \textbf{Descrição} & \textbf{Público e meta} \\
 \midrule
-Espaços de ciência e eventos (II, VI) & Participação na Semana Nacional de Ciência e Tecnologia e em atividades abertas da UFRJ, com o infográfico do projeto e o simulador interativo & Público geral \\
+Ações em escolas (I) & Oficinas em escolas públicas da rede estadual do Rio de Janeiro, com o simulador interativo e demonstrações simples de precipitação de sais & Ensino médio; 2 escolas por ano ($\geq$ 8 no projeto) \\
+Espaços de ciência e eventos (II, VI) & Participação na Semana Nacional de Ciência e Tecnologia e em atividades abertas da UFRJ, com o infográfico do projeto e o simulador interativo & Público geral; 1 evento por ano ($\geq$ 4) \\
 Materiais audiovisuais (III) & Vídeos curtos sobre água produzida, incrustação e IA na indústria & Redes sociais; 6 vídeos \\
-Atividades digitais (IV, VII) & Simulador interativo na web, em que o visitante escolhe a água e vê a injetividade cair ou se manter & Público geral e estudantes de graduação \\
-Comunicação pública (V) & Textos de divulgação e entrevistas sobre os resultados, em linguagem acessível & Imprensa e público geral \\
+Atividades digitais (IV, VII) & Simulador interativo na web, em que o visitante escolhe a água e vê a injetividade cair ou se manter & Público geral e estudantes; $\geq$ 1.000 acessos \\
+Comunicação pública (V) & Textos de divulgação e entrevistas sobre os resultados, em linguagem acessível & Imprensa e público geral; $\geq$ 4 textos \\
 \bottomrule
 \end{tabularx}
 \end{center}
 
 \noindent O bolsista de doutorado e os alunos de iniciação científica participam das ações,
-como parte da formação. O alcance é acompanhado por indicadores simples (número de eventos,
+como parte da formação. O alcance é acompanhado por indicadores simples (número de escolas e eventos,
 participantes, visualizações e acessos ao simulador) e relatado nos relatórios parciais.
 
 % ---------------------------------------------------------------------
@@ -1273,7 +1286,8 @@ institucional da UFRJ, o que assegura sua preservação e acesso permanente.
 Os valores correspondem às propostas comerciais anexadas na aba ``Orçamento Detalhado'':
 proposta nº 10615/2026-B da CEL Tecnologia e Informática Ltda. (CNPJ 03.621.548/0001-47),
 de 30/10/2026, para a estação de trabalho, e proposta LRAP-P20261030 do LRAP+/COPPE/UFRJ,
-de 30/10/2026, para os ensaios de injetividade. As demais cotações exigidas pelo item 9.6.1
+de 30/10/2026, para os ensaios de injetividade, a serem faturados pela Fundação COPPETEC
+(CNPJ 72.060.999/0001-75), centro de custos PEC 25597. As demais cotações exigidas pelo item 9.6.1
 permanecem em posse do proponente.
 
 \textbf{Capital.} A estação de trabalho é necessária ao treinamento dos modelos
@@ -1286,8 +1300,12 @@ lotes de treinamento e os ambientes paralelos do agente, e o uso dedicado ao lon
 estatístico (Seção~\ref{sec:metodo}). Os demais componentes foram dimensionados para
 alimentar a GPU sem gargalo (processador de 16 núcleos, 128~GB de memória, armazenamento
 NVMe e fonte compatível com a potência do conjunto) e para proteger o equipamento contra
-falhas de energia durante treinamentos longos (nobreak). O equipamento será incorporado
-ao patrimônio da UFRJ.
+falhas de energia durante treinamentos longos (nobreak). Os recursos compartilhados de computação
+de alto desempenho, como os do NACAD/COPPE, operam por filas e cotas de tempo, incompatíveis com o
+uso contínuo e interativo exigido pela triagem dos algoritmos, pelo ajuste de hiperparâmetros e
+pelas repetições com múltiplas sementes. O equipamento será incorporado ao patrimônio da UFRJ.
+Como a estação está no caminho crítico do cronograma (Figura~\ref{fig:gantt}), solicita-se que o
+recurso de capital seja liberado na primeira parcela.
 
 \textbf{Custeio.} Os ensaios de injetividade no LRAP+ fornecem os dados experimentais para
 a identificação dos parâmetros do dano (etapa 3, Hipótese 1) e para a validação
